@@ -1,0 +1,66 @@
+<template>
+  <div
+    class="flex flex-row items-center justify-between gap-3 border border-zinc-800 px-2.5 py-1.5 rounded-[25px]"
+  >
+    <!-- Left -->
+    <div class="flex flex-row items-center">
+      <!-- Color Picker -->
+      <color-picker
+        shape="circle"
+        v-model:pureColor="pureColor"
+        pickerType="chrome"
+        class="size-20"
+        format="hex"
+        @pureColorChange="onPureColorChange()"
+      />
+
+      <!-- Color Input -->
+      <input
+        type="text"
+        v-model="pureColor"
+        class="border-none bg-zinc-950 font-thin"
+      />
+    </div>
+
+    <!-- Right -->
+    <div class="flex flex-row items-center">
+      <button
+        class="border border-zinc-700 p-2 rounded-full bg-zinc-900 hover:bg-zinc-800 hover:scale-110 transition duration-300 ease-in-out"
+        @click="generateRandomColor()"
+      >
+        <Shuffle :size="12" />
+      </button>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+  import { ref, onMounted, defineEmits } from 'vue';
+  import { Shuffle } from 'lucide-vue-next';
+
+  const emitters = defineEmits(['change']);
+
+  const pureColor = ref<ColorInputWithoutInstance>(null);
+
+  const generateRandomColor = () => {
+    let color;
+
+    do {
+      color = `#${Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, '0')}`;
+    } while (color === '#ffffff');
+
+    pureColor.value = color;
+
+    emitters('change', pureColor.value);
+  };
+
+  const onPureColorChange = () => {
+    emitters('change', pureColor.value);
+  };
+
+  onMounted(() => {
+    generateRandomColor();
+  });
+</script>
