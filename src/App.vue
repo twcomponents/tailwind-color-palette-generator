@@ -5,12 +5,10 @@
         TailwindCSS Color Palette Generator
       </h1>
 
-      <p
-        class="flex flex-row gap-1 justify-start items-start text-zinc-500 text-sm font-thin"
-      >
+      <p class="text-zinc-500 text-sm font-thin">
         Press
         <button
-          class="border border-gray-500 px-1 text-xs font-semibold rounded-[5px] h-[18px] hover:bg-zinc-800 transition duration-200 ease-in-out"
+          class="inline-block border border-gray-500 px-1 text-xs font-semibold rounded-[5px] h-[18px] hover:bg-zinc-800 transition duration-200 ease-in-out align-baseline"
           @click="spacebarPressed()"
         >
           spacebar
