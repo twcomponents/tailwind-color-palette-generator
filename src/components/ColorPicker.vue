@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted, defineEmits } from 'vue';
+  import { ref, onMounted, defineEmits, defineExpose } from 'vue';
   import { Shuffle } from 'lucide-vue-next';
 
   const emitters = defineEmits(['change']);
@@ -62,5 +62,9 @@
 
   onMounted(() => {
     generateRandomColor();
+  });
+
+  defineExpose({
+    generateRandomColor,
   });
 </script>
