@@ -52,6 +52,7 @@
       <ColorPalette :colorPalette="colorPalette" :colorName="colorName" />
       <ColorPalette2
         :colorPalette="secondaryColorPalette"
+        :colorName="secondaryColorName"
         v-if="secondaryColorPalette !== null"
       />
     </div>
@@ -117,6 +118,7 @@
   // #region Secondary Color Palette
 
   const secondaryColorPalette = ref<any[] | null>(null);
+  const secondaryColorName = ref<string>('');
   const secondaryColorPickerRef = ref<InstanceType<typeof ColorPicker> | null>(
     null
   );
@@ -143,6 +145,15 @@
         color: color,
       };
     });
+
+    const colors = colornames.reduce(
+      (o: any, { name, hex }: any) => Object.assign(o, { [name]: hex }),
+      {}
+    );
+
+    const nearest = nearestColor.from(colors);
+
+    secondaryColorName.value = nearest(color);
   };
 
   const addSecondaryColor = () => {

@@ -93,3 +93,20 @@ body {
   font-weight: 500;
   font-style: italic;
 }
+
+.palette-wrapper {
+  @apply flex flex-col gap-5;
+
+  h1 {
+    @apply text-2xl font-bold text-center;
+  }
+
+  .color-palette {
+    @apply flex flex-row flex-wrap gap-3 justify-center text-xs;
+
+    button {
+      @apply flex flex-col items-center justify-center
+        w-20 h-20 rounded-[10px] border dark:border-zinc-700;
+    }
+  }
+}
