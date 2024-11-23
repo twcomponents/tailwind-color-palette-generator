@@ -6,7 +6,7 @@
           <div class="text-5xl font-bold text-color w-full">
             Tailwind CSS
             <br />
-            Color Generator
+            Color Palette Generator
           </div>
           <p class="text-zinc-500 font-thin mt-6 text-xl">
             Press
