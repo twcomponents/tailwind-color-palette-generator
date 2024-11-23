@@ -28,6 +28,7 @@
       <button
         class="border border-zinc-300 dark:border-zinc-700 p-2.5 rounded-full dark:bg-zinc-900 dark:hover:bg-zinc-800 hover:scale-110 transition duration-300 ease-in-out"
         @click="generateRandomColor()"
+        data-tippy-content="Generate random color"
       >
         <Shuffle :size="14" />
       </button>
@@ -36,8 +37,12 @@
 </template>
 
 <script setup lang="ts">
+  // native
   import { ref, onMounted, defineEmits, defineExpose } from 'vue';
+
+  // third party
   import { Shuffle } from 'lucide-vue-next';
+  import tippy from 'tippy.js';
 
   const emitters = defineEmits(['change']);
 
@@ -63,6 +68,8 @@
 
   onMounted(() => {
     generateRandomColor();
+
+    tippy('[data-tippy-content]');
   });
 
   defineExpose({

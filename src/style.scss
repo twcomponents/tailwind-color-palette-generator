@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './../node_modules/tippy.js/dist/tippy.css';
+
 :root {
   line-height: 1.5;
   font-family: 'Poppins', sans-serif;
