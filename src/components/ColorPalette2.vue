@@ -78,7 +78,7 @@
 
     button {
       @apply flex flex-col items-center justify-center
-        w-20 h-20 rounded-[10px] border border-zinc-700;
+        w-20 h-20 rounded-[10px] border dark:border-zinc-700;
     }
   }
 </style>
