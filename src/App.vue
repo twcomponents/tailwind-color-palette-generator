@@ -12,6 +12,9 @@
             Press
             <button
               class="inline-block border border-gray-500 px-1 text-base font-semibold rounded-[5px] h-[25px] hover:bg-zinc-800 transition duration-200 ease-in-out align-baseline"
+              :class="{
+                'bg-yellow-600 text-zinc-200 border-zinc-200': spacebarPress,
+              }"
               @click="generateRandomColors()"
             >
               spacebar
@@ -139,6 +142,8 @@
 
   // #region Random Color Generation
 
+  const spacebarPress = ref<boolean>(false);
+
   const generateRandomColors = () => {
     colorPickerRef.value?.generateRandomColor();
     secondaryColorPickerRef.value?.generateRandomColor();
@@ -147,6 +152,12 @@
   const handleSpacePress = (event: KeyboardEvent) => {
     if (event.code === 'Space') {
       generateRandomColors();
+
+      spacebarPress.value = true;
+
+      setTimeout(() => {
+        spacebarPress.value = false;
+      }, 250);
     }
   };
 
