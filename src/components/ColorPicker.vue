@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-row items-center justify-between gap-3 border border-zinc-700 px-4 py-2.5 rounded-[30px]"
+    class="flex flex-row items-center justify-between gap-3 border border-zinc-300 dark:border-zinc-700 px-4 py-2.5 rounded-[30px]"
   >
     <!-- Left -->
     <div class="flex flex-row items-center">
@@ -20,13 +20,13 @@
       type="text"
       v-model="pureColor"
       @change="emitters('change', pureColor)"
-      class="border-none daark:bg-zinc-950 font-thin outline-none text-center"
+      class="border-none dark:bg-zinc-950 font-thin outline-none text-center"
     />
 
     <!-- Right -->
     <div class="flex flex-row items-center">
       <button
-        class="border border-zinc-700 p-2.5 rounded-full dark:bg-zinc-900 dark:hover:bg-zinc-800 hover:scale-110 transition duration-300 ease-in-out"
+        class="border border-zinc-300 dark:border-zinc-700 p-2.5 rounded-full dark:bg-zinc-900 dark:hover:bg-zinc-800 hover:scale-110 transition duration-300 ease-in-out"
         @click="generateRandomColor()"
       >
         <Shuffle :size="14" />
