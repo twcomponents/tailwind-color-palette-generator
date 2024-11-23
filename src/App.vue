@@ -21,31 +21,54 @@
           </p>
         </div>
 
-        <div class="max-w-lg mx-auto">
+        <div class="flex flex-col gap-5 max-w-lg mx-auto">
           <ColorPicker ref="colorPickerRef" @change="onColorChange($event)" />
+
+          <template v-if="secondaryColorPalette !== null">
+            <ColorPicker
+              ref="secondaryColorPickerRef"
+              @change="onSecondaryColorChange($event)"
+            />
+          </template>
         </div>
 
         <div class="justify-center mt-2 hidden md:flex">
-          <div
+          <button
             class="flex items-center gap-1 cursor-pointer text-color-muted-extra p-4"
+            @click="addSecondaryColor()"
+            v-if="secondaryColorPalette === null"
           >
             <Plus class="size-5" />
             Add secondary color
-          </div>
+          </button>
         </div>
       </div>
     </div>
 
-    <ColorPalette :colorPalette="colorPalette" />
+    <div class="flex flex-col gap-5">
+      <ColorPalette :colorPalette="colorPalette" />
+      <ColorPalette2
+        :colorPalette="secondaryColorPalette"
+        v-if="secondaryColorPalette !== null"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  // native
+  import { ref } from 'vue';
+
+  // components
   import ColorPicker from '@/components/ColorPicker.vue';
   import ColorPalette from '@/components/ColorPalette.vue';
+  import ColorPalette2 from '@/components/ColorPalette2.vue';
+
+  // third-party
   import tailwindcssPaletteGenerator from '@bobthered/tailwindcss-palette-generator';
   import { Plus } from 'lucide-vue-next';
-  import { ref } from 'vue';
+
+  // #region Primary Color Palette
 
   const colorPalette = ref<any[]>([]);
   const colorPickerRef = ref<InstanceType<typeof ColorPicker> | null>(null);
@@ -74,7 +97,48 @@
     });
   };
 
+  // #endregion
+
+  // #region Secondary Color Palette
+
+  const secondaryColorPalette = ref<any[] | null>(null);
+  const secondaryColorPickerRef = ref<InstanceType<typeof ColorPicker> | null>(
+    null
+  );
+
+  const onSecondaryColorChange = (color: string) => {
+    const root = document.documentElement;
+
+    const newPalette = Object.entries(
+      tailwindcssPaletteGenerator({
+        colors: [color],
+        names: ['theme'],
+      }).theme
+    );
+
+    secondaryColorPalette.value = newPalette?.map((item: string[]) => {
+      const variableName = `--twc-theme2-${item[0]}`,
+        color = item[1];
+
+      root.style.setProperty(variableName, color);
+
+      return {
+        name: variableName,
+        level: item[0],
+        color: color,
+      };
+    });
+  };
+
+  const addSecondaryColor = () => {
+    secondaryColorPalette.value = [];
+    secondaryColorPickerRef.value?.generateRandomColor();
+  };
+
+  // #endregion
+
   const spacebarPressed = () => {
     colorPickerRef.value?.generateRandomColor();
+    secondaryColorPickerRef.value?.generateRandomColor();
   };
 </script>
