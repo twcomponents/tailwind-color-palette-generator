@@ -1,6 +1,5 @@
 <template>
   <Navbar />
-
   <div class="flex flex-col w-full py-10 default-container">
     <div class="mt-8 md:mt-16 md:mb-6 mb-6">
       <div class="md:my-14 md:mb-8">
@@ -59,19 +58,9 @@
       />
     </div>
   </div>
-
   <Badges />
-
   <Buttons />
-
-  <div class="py-10 default-container">
-    <h2 class="text-4xl font-semibold text-center mb-6">Authentication</h2>
-    <div class="grid md:grid-cols-2 items-center justify-center gap-4">
-      <SignIn />
-      <SignUp />
-    </div>
-  </div>
-
+  <Authentication />
   <Spinners />
 </template>
 
@@ -81,8 +70,6 @@
   import { ref } from 'vue';
   import Badges from './components/Badges.vue';
   import Buttons from './components/Buttons.vue';
-  import SignIn from './components/SignIn.vue';
-  import SignUp from './components/SignUp.vue';
   import Spinners from './components/Spinners.vue';
 
   // components
@@ -96,6 +83,8 @@
   import nearestColor from 'nearest-color';
   import { colornames } from 'color-name-list';
   import Navbar from './components/Navbar.vue';
+  import CopyCode from './components/CopyCode.vue';
+  import Authentication from './components/Authentication.vue';
 
   // #region Primary Color Palette
 
