@@ -19,6 +19,7 @@
     <input
       type="text"
       v-model="pureColor"
+      @change="emitters('change', pureColor)"
       class="border-none bg-zinc-950 font-thin outline-none text-center"
     />
 

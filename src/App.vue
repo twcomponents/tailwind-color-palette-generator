@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full py-10 default-container">
+  <div class="flex flex-col w-full py-10 default-container">
     <div class="mt-8 md:mt-16 md:mb-6 mb-6">
       <div class="md:my-14 md:mb-8">
         <div class="md:mb-12 text-center">
@@ -22,7 +22,7 @@
         </div>
 
         <div class="max-w-lg mx-auto">
-          <ColorPicker ref="colorPickerRef" @colorChange="onColorChange" />
+          <ColorPicker ref="colorPickerRef" @change="onColorChange($event)" />
         </div>
 
         <div class="justify-center mt-2 hidden md:flex">
@@ -35,18 +35,43 @@
         </div>
       </div>
     </div>
+
+    <ColorPalette :colorPalette="colorPalette" />
   </div>
 </template>
 
 <script setup lang="ts">
   import ColorPicker from '@/components/ColorPicker.vue';
+  import ColorPalette from '@/components/ColorPalette.vue';
+  import tailwindcssPaletteGenerator from '@bobthered/tailwindcss-palette-generator';
   import { Plus } from 'lucide-vue-next';
   import { ref } from 'vue';
 
+  const colorPalette = ref<any[]>([]);
   const colorPickerRef = ref<InstanceType<typeof ColorPicker> | null>(null);
 
   const onColorChange = (color: string) => {
-    console.log(color);
+    const root = document.documentElement;
+
+    const newPalette = Object.entries(
+      tailwindcssPaletteGenerator({
+        colors: [color],
+        names: ['theme'],
+      }).theme
+    );
+
+    colorPalette.value = newPalette?.map((item: string[]) => {
+      const variableName = `--twc-theme-${item[0]}`,
+        color = item[1];
+
+      root.style.setProperty(variableName, color);
+
+      return {
+        name: variableName,
+        level: item[0],
+        color: color,
+      };
+    });
   };
 
   const spacebarPressed = () => {
