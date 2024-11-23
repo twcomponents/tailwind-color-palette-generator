@@ -1,7 +1,7 @@
 <template>
   <div class="default-container py-10">
     <h2 class="text-4xl font-semibold text-center mb-6">Spinners</h2>
-    <div class="flex gap-4 w-full justify-center">
+    <div class="flex gap-4 w-full justify-center flex-wrap">
       <div
         class="size-20 rounded-full animate-spin border-[4px] border-solid border-twc-theme-500 border-t-transparent"
       ></div>

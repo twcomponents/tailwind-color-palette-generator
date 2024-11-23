@@ -5,7 +5,7 @@
 <template>
   <div class="default-container py-10">
     <h2 class="text-4xl font-semibold text-center mb-6">Buttons</h2>
-    <div class="space-x-4 flex items-start justify-center">
+    <div class="gap-4 flex items-start max-sm:flex-col justify-center">
       <!-- Solid Buttons -->
       <div class="rounded-3xl border border-zinc-700 p-4 w-full">
         <h2 class="font-bold mb-4 flex items-center">
