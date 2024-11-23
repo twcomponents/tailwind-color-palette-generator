@@ -14,7 +14,9 @@
     "@bobthered/tailwindcss-palette-generator": "^4.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "color-name-list": "^11.0.0",
     "lucide-vue-next": "^0.460.0",
+    "nearest-color": "^0.4.4",
     "radix-vue": "^1.9.9",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
@@ -23,6 +25,7 @@
     "vue3-colorpicker": "^2.3.0"
   },
   "devDependencies": {
+    "@types/nearest-color": "^0.4.1",
     "@vitejs/plugin-vue": "^5.1.4",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",

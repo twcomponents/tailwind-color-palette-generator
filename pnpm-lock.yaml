@@ -17,9 +17,15 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      color-name-list:
+        specifier: ^11.0.0
+        version: 11.0.0
       lucide-vue-next:
         specifier: ^0.460.0
         version: 0.460.0(vue@3.5.12(typescript@5.6.3))
+      nearest-color:
+        specifier: ^0.4.4
+        version: 0.4.4
       radix-vue:
         specifier: ^1.9.9
         version: 1.9.9(vue@3.5.12(typescript@5.6.3))
@@ -39,6 +45,9 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0(@aesoper/normal-utils@0.1.5)(@popperjs/core@2.11.8)(@vueuse/core@10.11.1(vue@3.5.12(typescript@5.6.3)))(gradient-parser@1.0.2)(lodash-es@4.17.21)(tinycolor2@1.6.0)(vue-types@4.2.1(vue@3.5.12(typescript@5.6.3)))(vue@3.5.12(typescript@5.6.3))
     devDependencies:
+      '@types/nearest-color':
+        specifier: ^0.4.1
+        version: 0.4.1
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(sass@1.80.6))(vue@3.5.12(typescript@5.6.3))
@@ -516,6 +525,9 @@ packages:
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
+  '@types/nearest-color@0.4.1':
+    resolution: {integrity: sha512-nxe9cdPrS0Gh3FRxDSHyB6Ep3OCCKqqBAYTj0EyT21aInkNESV9Vm0IS+ibeqkycSjadlAHmworjBgqz266S3w==}
+
   '@types/web-bluetooth@0.0.20':
     resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
 
@@ -705,6 +717,10 @@ packages:
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
     engines: {node: '>=7.0.0'}
+
+  color-name-list@11.0.0:
+    resolution: {integrity: sha512-jYouI0M+AWn30PCgmaOHkHtJy6pLHNklizgCTfj9Wx2k9zjiH2N/HxqrUhMBptCIZX16912/j4ISmW85FEF19Q==}
+    engines: {node: '>=16', npm: '>=8.11.0'}
 
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
@@ -1084,6 +1100,9 @@ packages:
 
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+
+  nearest-color@0.4.4:
+    resolution: {integrity: sha512-orhcaIORC10tf41Ld2wwlcC+FaAavHG87JHWB3eHH5p7v2k9Tzym2XNEZzLAm5YJwGv6Q38WWc7SOb+Qfu/4NQ==}
 
   node-addon-api@7.1.1:
     resolution: {integrity: sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ==}
@@ -1830,6 +1849,8 @@ snapshots:
 
   '@types/estree@1.0.6': {}
 
+  '@types/nearest-color@0.4.1': {}
+
   '@types/web-bluetooth@0.0.20': {}
 
   '@ungap/structured-clone@1.2.0': {}
@@ -2056,6 +2077,8 @@ snapshots:
   color-convert@2.0.1:
     dependencies:
       color-name: 1.1.4
+
+  color-name-list@11.0.0: {}
 
   color-name@1.1.4: {}
 
@@ -2440,6 +2463,8 @@ snapshots:
   nanoid@5.0.8: {}
 
   natural-compare@1.4.0: {}
+
+  nearest-color@0.4.4: {}
 
   node-addon-api@7.1.1:
     optional: true

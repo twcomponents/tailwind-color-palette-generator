@@ -49,7 +49,7 @@
     </div>
 
     <div class="flex flex-col gap-5">
-      <ColorPalette :colorPalette="colorPalette" />
+      <ColorPalette :colorPalette="colorPalette" :colorName="colorName" />
       <ColorPalette2
         :colorPalette="secondaryColorPalette"
         v-if="secondaryColorPalette !== null"
@@ -70,10 +70,13 @@
   // third-party
   import tailwindcssPaletteGenerator from '@bobthered/tailwindcss-palette-generator';
   import { Plus } from 'lucide-vue-next';
+  import nearestColor from 'nearest-color';
+  import { colornames } from 'color-name-list';
 
   // #region Primary Color Palette
 
   const colorPalette = ref<any[]>([]);
+  const colorName = ref<string>('');
   const colorPickerRef = ref<InstanceType<typeof ColorPicker> | null>(null);
 
   const onColorChange = (color: string) => {
@@ -98,6 +101,15 @@
         color: color,
       };
     });
+
+    const colors = colornames.reduce(
+      (o: any, { name, hex }: any) => Object.assign(o, { [name]: hex }),
+      {}
+    );
+
+    const nearest = nearestColor.from(colors);
+
+    colorName.value = nearest(color);
   };
 
   // #endregion
