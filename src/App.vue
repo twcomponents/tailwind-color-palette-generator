@@ -8,11 +8,11 @@
             <br />
             Color Generator
           </div>
-          <p class="text-zinc-500 font-thin mt-6 text-lg">
+          <p class="text-zinc-500 font-thin mt-6 text-xl">
             Press
             <button
-              class="inline-block border border-gray-500 px-1 text-xs font-semibold rounded-[5px] h-[18px] hover:bg-zinc-800 transition duration-200 ease-in-out align-baseline"
-              @click="spacebarPressed()"
+              class="inline-block border border-gray-500 px-1 text-base font-semibold rounded-[5px] h-[25px] hover:bg-zinc-800 transition duration-200 ease-in-out align-baseline"
+              @click="generateRandomColors()"
             >
               spacebar
             </button>
@@ -57,7 +57,7 @@
 
 <script setup lang="ts">
   // native
-  import { ref } from 'vue';
+  import { ref, onMounted, onUnmounted } from 'vue';
 
   // components
   import ColorPicker from '@/components/ColorPicker.vue';
@@ -137,8 +137,26 @@
 
   // #endregion
 
-  const spacebarPressed = () => {
+  // #region Random Color Generation
+
+  const generateRandomColors = () => {
     colorPickerRef.value?.generateRandomColor();
     secondaryColorPickerRef.value?.generateRandomColor();
   };
+
+  const handleSpacePress = (event: KeyboardEvent) => {
+    if (event.code === 'Space') {
+      generateRandomColors();
+    }
+  };
+
+  // #endregion
+
+  onMounted(() => {
+    window.addEventListener('keydown', handleSpacePress);
+  });
+
+  onUnmounted(() => {
+    window.removeEventListener('keydown', handleSpacePress);
+  });
 </script>
