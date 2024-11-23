@@ -74,7 +74,7 @@
 
 <style scoped lang="scss">
   .color-palette {
-    @apply flex flex-row gap-3 justify-center text-xs;
+    @apply flex flex-row flex-wrap gap-3 justify-center text-xs;
 
     button {
       @apply flex flex-col items-center justify-center
