@@ -57,11 +57,31 @@
       />
     </div>
   </div>
+
+  <Badges />
+
+  <Buttons />
+
+  <div class="py-10 default-container">
+    <h2 class="text-4xl font-semibold text-center mb-6">Authentication</h2>
+    <div class="grid grid-cols-2 items-center justify-center gap-4">
+      <SignIn />
+      <SignUp />
+    </div>
+  </div>
+
+  <Spinners />
 </template>
 
 <script setup lang="ts">
   // native
-  import { ref, onMounted, onUnmounted } from 'vue';
+  import { onMounted, onUnmounted } from 'vue';
+  import { ref } from 'vue';
+  import Badges from './components/Badges.vue';
+  import Buttons from './components/Buttons.vue';
+  import SignIn from './components/SignIn.vue';
+  import SignUp from './components/SignUp.vue';
+  import Spinners from './components/Spinners.vue';
 
   // components
   import ColorPicker from '@/components/ColorPicker.vue';
