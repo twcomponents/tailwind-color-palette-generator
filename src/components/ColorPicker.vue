@@ -40,7 +40,7 @@
 
   const emitters = defineEmits(['change']);
 
-  const pureColor = ref<ColorInputWithoutInstance>(null);
+  const pureColor = ref<string | null>(null);
 
   const generateRandomColor = () => {
     let color;

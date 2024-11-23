@@ -43,7 +43,7 @@
   import { Plus } from 'lucide-vue-next';
   import { ref } from 'vue';
 
-  const colorPickerRef = ref<ColorPicker | null>(null);
+  const colorPickerRef = ref<InstanceType<typeof ColorPicker> | null>(null);
 
   const onColorChange = (color: string) => {
     console.log(color);
