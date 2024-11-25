@@ -4,19 +4,21 @@
 
 <template>
   <div
-    class="fixed top-0 left-0 py-2.5 w-full bg-black border-b border-zinc-700 z-50"
+    class="fixed top-0 left-0 py-4 w-full dark:bg-zinc-900/60 border-b dark:border-zinc-800 z-50 backdrop-blur-md"
   >
     <nav class="flex items-center justify-between default-container">
       <div class="font-extrabold text-3xl">
-        <span class="text-twc-theme-500">UI</span>
-        Palette
+        <a href="https://tailwindcomponents.dev" class="text-twc-theme-400">
+          UI
+        </a>
+        / Palette
       </div>
 
       <a
         href="https://github.com/twcomponents/tailwind-color-palette-generator"
         class="size-10 rounded-md border border-zinc-700 hover:bg-zinc-600 duration-200 flex items-center justify-center"
       >
-        <Github class="size-5 text-white" />
+        <Github class="size-5 dark:text-white" />
       </a>
     </nav>
   </div>
