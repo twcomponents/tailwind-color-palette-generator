@@ -13,9 +13,9 @@
           <p class="text-zinc-500 font-thin mt-6 text-xl">
             Press
             <button
-              class="inline-block border border-gray-500 px-1 text-base font-semibold rounded-[5px] h-[25px] hover:bg-zinc-800 transition duration-200 ease-in-out align-baseline"
+              class="inline-block border border-gray-500 px-1 text-base font-semibold rounded-[5px] h-[25px] hover:bg-twc-theme-400 hover:text-white transition duration-200 ease-in-out align-baseline"
               :class="{
-                'bg-yellow-600 text-zinc-200 border-zinc-200': spacebarPress,
+                'bg-twc-theme-600 text-zinc-200 border-zinc-200': spacebarPress,
               }"
               @click="generateRandomColors()"
             >
