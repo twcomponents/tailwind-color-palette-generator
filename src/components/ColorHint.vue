@@ -2,7 +2,7 @@
   <div
     v-if="props.isVisible"
     :style="{ top: `${props.position.y}px`, left: `${props.position.x}px` }"
-    class="absolute flex flex-col gap-1 z-50 bg-white p-3 shadow-lg rounded-lg text-gray-500"
+    class="absolute flex flex-col gap-1 z-50 bg-white p-3 shadow-lg rounded-lg text-gray-500 border min-w-40 dark:bg-zinc-900 dark:border-zinc-700"
   >
     <!-- Color Hints -->
     <template v-for="color in props.hints" :key="color.level">
@@ -19,9 +19,13 @@
     </template>
 
     <!-- Shortcut -->
-    <div class="flex flex-row mt-2 items-center justify-between">
-      <span>Copy:</span>
-      <kbd class="bg-gray-200 px-1 rounded-md">
+    <div
+      class="flex flex-row mt-2 items-center justify-between border-t dark:border-zinc-700 pt-2"
+    >
+      <span class="text-sm">Copy</span>
+      <kbd
+        class="bg-gray-200 dark:bg-zinc-700 dark:text-zinc-400 px-1.5 rounded-md"
+      >
         {{ copied ? 'Copied 🤘' : shortcut }}
       </kbd>
     </div>
