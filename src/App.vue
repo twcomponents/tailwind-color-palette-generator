@@ -1,6 +1,7 @@
 <template>
   <Navbar />
-  <div class="flex flex-col w-full py-10 default-container">
+
+  <main class="flex flex-col w-full py-10 default-container">
     <div class="mt-8 md:mt-16 md:mb-6 mb-6">
       <div class="md:my-14 md:mb-8">
         <div class="md:mb-12 text-center">
@@ -57,11 +58,24 @@
         v-if="secondaryColorPalette !== null"
       />
     </div>
-  </div>
-  <Badges />
-  <Buttons />
-  <Authentication />
-  <Spinners />
+  </main>
+
+  <section
+    class="relative flex flex-col w-full py-10 default-container"
+    @mousemove="onDemoAreaMouseMove($event)"
+    @mouseleave="onDemoAreaMouseLeave($event)"
+  >
+    <Badges />
+    <Buttons />
+    <Authentication />
+    <Spinners />
+  </section>
+
+  <ColorHint
+    :position="colorHintPosition"
+    :isVisible="isColorHintVisible"
+    :hints="colorHints"
+  />
 </template>
 
 <script setup lang="ts">
@@ -71,6 +85,9 @@
   import Badges from './components/Badges.vue';
   import Buttons from './components/Buttons.vue';
   import Spinners from './components/Spinners.vue';
+  import ColorHint from './components/ColorHint.vue';
+
+  import { IColorHint } from '@/shared/models/color';
 
   // components
   import ColorPicker from '@/components/ColorPicker.vue';
@@ -194,6 +211,59 @@
         spacebarPress.value = false;
       }, 250);
     }
+  };
+
+  // #endregion
+
+  // #region Demo Hints
+
+  const colorHintPosition = ref<{ x: number; y: number }>({ x: 0, y: 0 });
+  const isColorHintVisible = ref<boolean>(false);
+  const colorHints = ref<IColorHint[]>([]);
+
+  const onDemoAreaMouseMove = (event: MouseEvent) => {
+    const x = event.pageX - 20,
+      y = event.pageY + 20;
+
+    const elementClasses = Array.from((event.target as HTMLElement).classList),
+      twcColorClasses = elementClasses.filter((className: string) =>
+        className.includes('-twc-theme-')
+      );
+
+    if (twcColorClasses.length === 0) {
+      isColorHintVisible.value = false;
+
+      return;
+    }
+
+    const regex = /(([a-z]+:)?[a-z]+)-twc-theme-(\d+)/;
+
+    colorHints.value = (
+      twcColorClasses
+        .map((className: string) => {
+          const match = className.match(regex);
+          console.log(match);
+
+          if (match) {
+            return <IColorHint>{
+              label: match[1],
+              level: Number(match[match.length - 1]),
+              color: `--twc-theme-${match[match.length - 1]}`,
+            };
+          }
+        })
+        .filter(Boolean) as IColorHint[]
+    ).sort((x: IColorHint, y: IColorHint) => (x.label > y.label ? 1 : -1));
+
+    console.log(twcColorClasses);
+
+    isColorHintVisible.value = true;
+    colorHintPosition.value = { x, y };
+  };
+
+  const onDemoAreaMouseLeave = (event: MouseEvent) => {
+    isColorHintVisible.value = false;
+    colorHintPosition.value = { x: 0, y: 0 };
   };
 
   // #endregion
