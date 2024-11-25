@@ -4,7 +4,7 @@
   >
     <!-- Left -->
     <div
-      class="flex flex-row items-center hover:!scale-125 transition duration-300 ease-in-out"
+      class="flex flex-row items-center hover:scale-125 transition duration-300 ease-in-out"
     >
       <!-- Color Picker -->
       <color-picker

@@ -203,6 +203,9 @@
 
   const handleSpacePress = (event: KeyboardEvent) => {
     if (event.code === 'Space') {
+      event.preventDefault();
+      event.stopPropagation();
+
       generateRandomColors();
 
       spacebarPress.value = true;
