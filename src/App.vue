@@ -1,7 +1,7 @@
 <template>
   <Navbar />
 
-  <main class="flex flex-col w-full py-10 default-container">
+  <main class="flex flex-col w-full py-10">
     <div class="mt-8 md:mt-16 md:mb-6 mb-6">
       <div class="md:my-14 md:mb-8">
         <div class="md:mb-12 text-center">
@@ -61,7 +61,7 @@
   </main>
 
   <section
-    class="relative flex flex-col w-full py-10 default-container"
+    class="relative flex flex-col w-full py-10"
     @mousemove="onDemoAreaMouseMove($event)"
     @mouseleave="onDemoAreaMouseLeave($event)"
   >
