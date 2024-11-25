@@ -242,7 +242,6 @@
       twcColorClasses
         .map((className: string) => {
           const match = className.match(regex);
-          console.log(match);
 
           if (match) {
             return <IColorHint>{
@@ -255,13 +254,11 @@
         .filter(Boolean) as IColorHint[]
     ).sort((x: IColorHint, y: IColorHint) => (x.label > y.label ? 1 : -1));
 
-    console.log(twcColorClasses);
-
     isColorHintVisible.value = true;
     colorHintPosition.value = { x, y };
   };
 
-  const onDemoAreaMouseLeave = (event: MouseEvent) => {
+  const onDemoAreaMouseLeave = () => {
     isColorHintVisible.value = false;
     colorHintPosition.value = { x: 0, y: 0 };
   };
