@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-  import CopyCode from './CopyCode.vue';
   import SignIn from './SignIn.vue';
   import SignUp from './SignUp.vue';
+  import CopyCode from '@/components/CopyCode.vue';
 
   const code = `
   <div class="grid md:grid-cols-2 items-center justify-center gap-4">

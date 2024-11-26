@@ -82,7 +82,7 @@
 </template>
 
 <script setup lang="ts">
-  import CopyCode from './CopyCode.vue';
+  import CopyCode from '@/components/CopyCode.vue';
 
   const code = `
   <div class="flex flex-wrap gap-2 justify-center">
