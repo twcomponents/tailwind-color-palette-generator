@@ -10,7 +10,7 @@
       "execute": true,
       "recycle": true,
       "color": "terminal.ansiBlue",
-      "command": "npm run dev"
+      "command": "pnpm dev"
     }
   ]
 }

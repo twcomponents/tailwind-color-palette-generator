@@ -3,13 +3,14 @@
     class="flex flex-row items-center justify-between gap-3 border border-zinc-300 dark:border-zinc-700 px-4 py-2.5 rounded-[30px]"
   >
     <!-- Left -->
-    <div class="flex flex-row items-center">
+    <div
+      class="flex flex-row items-center hover:scale-125 transition duration-300 ease-in-out"
+    >
       <!-- Color Picker -->
       <color-picker
         shape="circle"
         v-model:pureColor="pureColor"
         pickerType="chrome"
-        class="size-20"
         format="hex"
         @pureColorChange="onPureColorChange()"
       />
