@@ -1,7 +1,14 @@
 <template>
   <div class="palette-wrapper">
     <!-- Title -->
-    <h1>
+    <h1
+      v-motion
+      :initial="{ opacity: 0, y: 40 }"
+      :visible-once="{
+        y: 0,
+        opacity: 1,
+      }"
+    >
       {{ props.colorName.name }}
     </h1>
 

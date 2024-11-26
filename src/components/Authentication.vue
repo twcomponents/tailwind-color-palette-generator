@@ -1,12 +1,39 @@
 <template>
   <div class="py-10 default-container relative">
-    <h2 class="text-4xl font-semibold text-center mb-6">Authentication</h2>
+    <h2
+      v-motion
+      :initial="{ opacity: 0, y: 40 }"
+      :visible-once="{
+        y: 0,
+        opacity: 1,
+      }"
+      :duration="300"
+      class="text-4xl z-0 font-semibold text-center mb-6"
+    >
+      Authentication
+    </h2>
     <div class="absolute top-12 right-6">
       <CopyCode :code="code" />
     </div>
-    <div class="grid md:grid-cols-2 items-center justify-center gap-4">
-      <SignIn />
-      <SignUp />
+    <div class="grid z-10 md:grid-cols-2 items-center justify-center gap-4">
+      <SignIn
+        v-motion
+        :initial="{ opacity: 0, x: -100 }"
+        :visible-once="{
+          x: 0,
+          opacity: 1,
+        }"
+        :duration="500"
+      />
+      <SignUp
+        v-motion
+        :initial="{ opacity: 0, x: 100 }"
+        :visible-once="{
+          x: 0,
+          opacity: 1,
+        }"
+        :duration="500"
+      />
     </div>
   </div>
 </template>

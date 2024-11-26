@@ -4,13 +4,29 @@
       <div class="md:my-14 md:mb-8">
         <div class="md:mb-12 text-center">
           <div class="text-5xl font-bold text-color w-full">
-            Tailwind CSS
-            <br />
-            Color Palette Generator
+            <LetterPullUp
+              words="Tailwind CSS"
+              :delay="30"
+              class="text-black dark:text-white"
+            />
+            <LetterPullUp
+              words="Color Palette Generator"
+              :delay="30"
+              class="text-black dark:text-white"
+            />
           </div>
           <p class="text-zinc-500 font-thin mt-6 text-xl">
             Press
             <button
+              v-motion
+              :initial="{ color: '#6b7280', borderColor: '#6b7280' }"
+              :enter="{
+                color: '#e4e4e7',
+                borderColor: '#e4e4e7',
+                opacity: 1,
+              }"
+              :delay="500"
+              :duration="500"
               class="inline-block border border-gray-500 px-1 text-base font-semibold rounded-[5px] h-[25px] hover:bg-twc-theme-400 hover:text-white transition duration-200 ease-in-out align-baseline"
               :class="{
                 'bg-twc-theme-600 text-zinc-200 border-zinc-200': spacebarPress,
@@ -100,6 +116,7 @@
   import Navbar from '@/components/Navbar.vue';
   import CopyCode from '@/components/CopyCode.vue';
   import Authentication from '@/components/Authentication.vue';
+  import LetterPullUp from '@/components/inspira-ui/LetterPullUp.vue';
 
   // #region Primary Color Palette
 
