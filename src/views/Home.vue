@@ -84,7 +84,7 @@
 <script setup lang="ts">
   // native
   import { ref, watch, onMounted, onUnmounted } from 'vue';
-  import { RouteParamsGeneric, useRoute } from 'vue-router';
+  import { RouteParamsGeneric, useRoute, useRouter } from 'vue-router';
 
   import Badges from '@/components/Badges.vue';
   import Buttons from '@/components/Buttons.vue';
@@ -107,6 +107,7 @@
   import Authentication from '@/components/Authentication.vue';
 
   const route = useRoute();
+  const router = useRouter();
 
   // router hex colors
   const primary = ref<string>(route.params.primary as string);
@@ -120,6 +121,8 @@
       primary.value = newParams.primary as string;
       secondary.value = newParams.secondary as string;
 
+      console.log(primary.value, secondary.value);
+
       handleRouteColorChanges();
     }
   );
@@ -129,8 +132,13 @@
       colorPickerRef.value?.setPureColor(primary.value);
     }
 
+    console.log(secondary.value);
+
     if (secondary.value) {
-      secondaryColorPalette.value = [];
+      if (secondaryColorPalette.value === null) {
+        secondaryColorPalette.value = [];
+      }
+
       secondaryColorPickerRef.value?.setPureColor(secondary.value);
     }
   };
@@ -174,6 +182,14 @@
     const nearest = nearestColor.from(colors);
 
     colorName.value = nearest(color) ?? 'Awesome Primary Color';
+
+    router.push({
+      name: 'home-static',
+      params: {
+        primary: color.replace('#', ''),
+        secondary: secondary.value,
+      },
+    });
   };
 
   // #endregion
@@ -217,6 +233,14 @@
     const nearest = nearestColor.from(colors);
 
     secondaryColorName.value = nearest(color) ?? 'Awesome Secondary Color';
+
+    router.push({
+      name: 'home-static',
+      params: {
+        primary: primary.value,
+        secondary: color.replace('#', ''),
+      },
+    });
   };
 
   const addSecondaryColor = () => {

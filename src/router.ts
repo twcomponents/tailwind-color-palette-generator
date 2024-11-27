@@ -11,7 +11,7 @@ const router = createRouter({
     { name: 'home', path: '/', component: Home },
     // handles /:primary/:secondary
     {
-      name: 'params',
+      name: 'home-static',
       path: '/:primary([a-fA-F0-9]{6})/:secondary([a-fA-F0-9]{6})?',
       component: Home,
     },
