@@ -9,7 +9,7 @@ const router = createRouter({
   routes: [
     // home
     { name: 'home', path: '/', component: Home },
-    // handles /:primary/:secondary
+    // handles /:primary/:secondary?
     {
       name: 'home-static',
       path: '/:primary([a-fA-F0-9]{6})/:secondary([a-fA-F0-9]{6})?',
