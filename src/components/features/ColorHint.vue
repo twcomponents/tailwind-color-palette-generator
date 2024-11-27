@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-  import { IColorHint } from '@/shared/models/color';
+  import { IColorHint } from '@/shared/models/color.model';
   import { onBeforeUnmount, onMounted, ref } from 'vue';
 
   const props = defineProps<{

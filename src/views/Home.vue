@@ -116,7 +116,7 @@
   import LetterPullUp from '@/components/inspira-ui/LetterPullUp.vue';
 
   // shared
-  import { IColorHint } from '@/shared/models/color';
+  import { IColorHint } from '@/shared/models/color.model';
 
   // third-party
   import tailwindcssPaletteGenerator from '@bobthered/tailwindcss-palette-generator';
@@ -211,7 +211,7 @@
 
   // #region Secondary Color Palette
 
-  const secondaryColorPalette = ref<any[] | null>(null);
+  const secondaryColorPalette = ref<IPaletteColor[] | null>(null);
   const secondaryColorName = ref<string>('');
   const secondaryColorPickerRef = ref<InstanceType<typeof ColorPicker> | null>(
     null
