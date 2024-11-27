@@ -1,8 +1,10 @@
 <template>
+  <!-- Generator UI -->
   <section class="flex flex-col w-full py-10">
     <div class="mt-8 mb-6 md:mt-16 md:mb-6">
       <div class="md:my-14 md:mb-8">
         <div class="md:mb-12 text-center">
+          <!-- Title -->
           <div class="text-5xl font-bold text-color w-full">
             <LetterPullUp
               words="Tailwind CSS"
@@ -15,6 +17,8 @@
               class="text-black dark:text-white"
             />
           </div>
+
+          <!-- Subtitle -->
           <p class="mt-6 text-xl font-thin text-zinc-500">
             Press
             <button
@@ -40,13 +44,16 @@
           </p>
         </div>
 
+        <!-- Color Pickers -->
         <div class="flex flex-col max-w-lg gap-5 mx-auto">
+          <!-- Primary Color Picker -->
           <ColorPicker
             ref="colorPickerRef"
             :pureColor="primary"
             @change="onColorChange($event)"
           />
 
+          <!-- Secondary Color Picker -->
           <template v-if="secondaryColorPalette !== null">
             <ColorPicker
               ref="secondaryColorPickerRef"
@@ -56,6 +63,7 @@
           </template>
         </div>
 
+        <!-- Reveal Secondary Color -->
         <div class="justify-center hidden mt-2 md:flex">
           <button
             class="flex items-center gap-1 p-4 cursor-pointer text-color-muted-extra"
@@ -69,8 +77,12 @@
       </div>
     </div>
 
+    <!-- Color Palettes -->
     <div class="flex flex-col gap-5">
+      <!-- Primary Color Palette -->
       <ColorPalette :colorPalette="colorPalette" :colorName="colorName" />
+
+      <!-- Secondary Color Palette -->
       <ColorPalette2
         :colorPalette="secondaryColorPalette"
         :colorName="secondaryColorName"
@@ -79,6 +91,7 @@
     </div>
   </section>
 
+  <!-- Demos -->
   <section
     class="relative flex flex-col w-full py-10"
     @mousemove="onDemoAreaMouseMove($event)"
@@ -90,6 +103,7 @@
     <Spinners />
   </section>
 
+  <!-- Demo Hover Hint -->
   <ColorHint
     :position="colorHintPosition"
     :isVisible="isColorHintVisible"
