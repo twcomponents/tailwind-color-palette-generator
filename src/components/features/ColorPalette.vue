@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col gap-5">
+  <div class="flex flex-col gap-3 container w-7/12">
     <!-- Header -->
-    <div class="flex flex-row gap-2 container items-center justify-between">
+    <div class="flex flex-row gap-2 items-center justify-between px-2">
       <!-- Title -->
       <h1
         v-motion
@@ -10,7 +10,7 @@
           y: 0,
           opacity: 1,
         }"
-        class="text-2xl font-bold text-center"
+        class="text-lg font-light text-center"
       >
         {{ props.colorName.name }}
       </h1>
