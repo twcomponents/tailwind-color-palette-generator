@@ -45,9 +45,13 @@
   import { Shuffle } from 'lucide-vue-next';
   import tippy from 'tippy.js';
 
+  const props = defineProps<{
+    pureColor: string;
+  }>();
+
   const emitters = defineEmits(['change']);
 
-  const pureColor = ref<string | null>(null);
+  const pureColor = ref<string>('#ffffff');
 
   const generateRandomColor = () => {
     let color;
@@ -67,13 +71,24 @@
     emitters('change', pureColor.value);
   };
 
+  const setPureColor = (color: string) => {
+    pureColor.value = color;
+  };
+
   onMounted(() => {
-    generateRandomColor();
+    if (props.pureColor) {
+      pureColor.value = `#${props.pureColor}`;
+
+      emitters('change', pureColor.value);
+    } else {
+      generateRandomColor();
+    }
 
     tippy('[data-tippy-content]');
   });
 
   defineExpose({
     generateRandomColor,
+    setPureColor,
   });
 </script>

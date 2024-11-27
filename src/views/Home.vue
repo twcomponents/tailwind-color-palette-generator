@@ -25,7 +25,11 @@
         </div>
 
         <div class="flex flex-col max-w-lg gap-5 mx-auto">
-          <ColorPicker ref="colorPickerRef" @change="onColorChange($event)" />
+          <ColorPicker
+            ref="colorPickerRef"
+            :pureColor="primary"
+            @change="onColorChange($event)"
+          />
 
           <template v-if="secondaryColorPalette !== null">
             <ColorPicker
@@ -102,8 +106,10 @@
   import Authentication from '@/components/Authentication.vue';
 
   const route = useRoute();
-  const primary = ref(route.params.primary);
-  const secondary = ref(route.params.secondary);
+
+  // router hex colors
+  const primary = ref<string>(route.params.primary as string);
+  const secondary = ref<string>(route.params.secondary as string);
 
   // Watch for changes in route parameters
   watch(
@@ -111,8 +117,12 @@
     (newParams) => {
       primary.value = newParams.primary;
       secondary.value = newParams.secondary;
+
+      console.log(primary.value);
+      console.log(secondary.value);
     }
   );
+
   // #region Primary Color Palette
 
   const colorPalette = ref<any[]>([]);
@@ -287,6 +297,10 @@
 
   onMounted(() => {
     window.addEventListener('keydown', handleSpacePress);
+
+    if (primary.value) {
+      colorPickerRef.value?.setPureColor(primary.value);
+    }
   });
 
   onUnmounted(() => {
