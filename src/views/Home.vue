@@ -50,6 +50,7 @@
           <ColorPicker
             ref="colorPickerRef"
             :pureColor="primary"
+            :pickerIndex="0"
             @change="onColorChange($event)"
           />
 
@@ -58,7 +59,9 @@
             <ColorPicker
               ref="secondaryColorPickerRef"
               :pureColor="secondary"
+              :pickerIndex="1"
               @change="onSecondaryColorChange($event)"
+              @close="resetSecondaryColorPalette()"
             />
           </template>
         </div>
