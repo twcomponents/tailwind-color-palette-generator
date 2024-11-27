@@ -34,6 +34,7 @@
           <template v-if="secondaryColorPalette !== null">
             <ColorPicker
               ref="secondaryColorPickerRef"
+              :pureColor="secondary"
               @change="onSecondaryColorChange($event)"
             />
           </template>
@@ -300,6 +301,11 @@
 
     if (primary.value) {
       colorPickerRef.value?.setPureColor(primary.value);
+    }
+
+    if (secondary.value) {
+      secondaryColorPalette.value = [];
+      secondaryColorPickerRef.value?.setPureColor(secondary.value);
     }
   });
 
