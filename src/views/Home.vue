@@ -156,6 +156,12 @@
 
       secondaryColorPickerRef.value?.setPureColor(secondary.value);
     }
+
+    if (!primary.value && !secondary.value) {
+      resetSecondaryColorPalette();
+
+      colorPickerRef.value?.generateRandomColor();
+    }
   };
 
   // #endregion
@@ -249,18 +255,37 @@
 
     secondaryColorName.value = nearest(color) ?? 'Awesome Secondary Color';
 
+    const routeParams = { secondary: color.replace('#', '') };
+
+    if (primary.value) {
+      routeParams.primary = primary.value;
+    }
+
     router.push({
       name: 'home-static',
-      params: {
-        primary: primary.value,
-        secondary: color.replace('#', ''),
-      },
+      params: routeParams,
     });
   };
 
   const addSecondaryColor = () => {
     secondaryColorPalette.value = [];
     secondaryColorPickerRef.value?.generateRandomColor();
+  };
+
+  const resetSecondaryColorPalette = () => {
+    const root = document.documentElement;
+
+    // update CSS variables
+    secondaryColorPalette.value = secondaryColorPalette.value?.forEach(
+      (paletteColor: IPaletteColor) => {
+        const variableName = `--twc-theme2-${paletteColor.level}`;
+
+        root.style.setProperty(variableName, '#ffffff');
+      }
+    );
+
+    // reset secondary color palette
+    secondaryColorPalette.value = null;
   };
 
   // #endregion
