@@ -116,7 +116,7 @@
   import LetterPullUp from '@/components/inspira-ui/LetterPullUp.vue';
 
   // shared
-  import { IColorHint } from '@/shared/models/color.model';
+  import { IPaletteColor } from '@/shared/models/color.model';
 
   // third-party
   import tailwindcssPaletteGenerator from '@bobthered/tailwindcss-palette-generator';
@@ -295,7 +295,7 @@
 
   const colorHintPosition = ref<{ x: number; y: number }>({ x: 0, y: 0 });
   const isColorHintVisible = ref<boolean>(false);
-  const colorHints = ref<IColorHint[]>([]);
+  const colorHints = ref<IPaletteColor[]>([]);
 
   const onDemoAreaMouseMove = (event: MouseEvent) => {
     const x = event.pageX - 20,
@@ -320,15 +320,17 @@
           const match = className.match(regex);
 
           if (match) {
-            return <IColorHint>{
+            return <IPaletteColor>{
               label: match[1],
               level: Number(match[match.length - 1]),
               color: `--twc-theme-${match[match.length - 1]}`,
             };
           }
         })
-        .filter(Boolean) as IColorHint[]
-    ).sort((x: IColorHint, y: IColorHint) => (x.label > y.label ? 1 : -1));
+        .filter(Boolean) as IPaletteColor[]
+    ).sort((x: IPaletteColor, y: IPaletteColor) =>
+      x.label > y.label ? 1 : -1
+    );
 
     isColorHintVisible.value = true;
     colorHintPosition.value = { x, y };

@@ -18,10 +18,13 @@
 
 <script setup lang="ts">
   // models
-  import { IColorHint, ColorVariableTheme } from '@/shared/models/color.model';
+  import {
+    IPaletteColor,
+    ColorVariableTheme,
+  } from '@/shared/models/color.model';
 
   const props = defineProps<{
-    paletteColor: IColorHint;
+    paletteColor: IPaletteColor;
     themeVariableKey: ColorVariableTheme;
   }>();
 </script>

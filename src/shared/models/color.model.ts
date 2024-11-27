@@ -3,7 +3,7 @@ export enum ColorVariableTheme {
   TWC_THEME2 = 'twc-theme2',
 }
 
-export interface IColorHint {
+export interface IPaletteColor {
   /**
    * The label of the color. Like: text, background, border, etc.
    */

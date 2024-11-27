@@ -37,10 +37,13 @@
   import ColorButton from '@/components/features/ColorButton.vue';
 
   // models
-  import { IColorHint, ColorVariableTheme } from '@/shared/models/color.model';
+  import {
+    IPaletteColor,
+    ColorVariableTheme,
+  } from '@/shared/models/color.model';
 
   const props = defineProps<{
-    colorPalette: IColorHint[];
+    colorPalette: IPaletteColor[];
     colorName: any;
   }>();
 </script>

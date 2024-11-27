@@ -33,11 +33,11 @@
 </template>
 
 <script setup lang="ts">
-  import { IColorHint } from '@/shared/models/color.model';
+  import { IPaletteColor } from '@/shared/models/color.model';
   import { onBeforeUnmount, onMounted, ref } from 'vue';
 
   const props = defineProps<{
-    hints: IColorHint[];
+    hints: IPaletteColor[];
     position: { x: number; y: number };
     isVisible: boolean;
   }>();
