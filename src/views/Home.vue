@@ -121,8 +121,6 @@
       primary.value = newParams.primary as string;
       secondary.value = newParams.secondary as string;
 
-      console.log(primary.value, secondary.value);
-
       handleRouteColorChanges();
     }
   );
@@ -131,8 +129,6 @@
     if (primary.value) {
       colorPickerRef.value?.setPureColor(primary.value);
     }
-
-    console.log(secondary.value);
 
     if (secondary.value) {
       if (secondaryColorPalette.value === null) {

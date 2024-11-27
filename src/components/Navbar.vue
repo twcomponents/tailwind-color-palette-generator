@@ -7,12 +7,11 @@
     class="fixed top-0 left-0 py-4 w-full bg-white/80 dark:bg-zinc-900/80 border-b dark:border-zinc-800 z-50 backdrop-blur-md"
   >
     <nav class="flex items-center justify-between default-container">
-      <div class="font-extrabold text-3xl">
-        <a href="https://tailwindcomponents.dev" class="text-twc-theme-400">
-          UI
-        </a>
-        / Palette
-      </div>
+      <RouterLink to="/" class="font-extrabold text-3xl">
+        <span class="text-twc-theme-400">UI</span>
+        /
+        <span class="text-twc-theme2-400">Palette</span>
+      </RouterLink>
 
       <a
         href="https://github.com/twcomponents/tailwind-color-palette-generator"
