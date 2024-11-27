@@ -9,7 +9,7 @@
       <div class="flex flex-row gap-2 items-center">
         <div
           :style="{ backgroundColor: `var(${color.color})` }"
-          class="rounded-md border w-5 h-5"
+          class="rounded-md border dark:border-zinc-400 w-5 h-5"
         >
           <!-- Placeholder -->
         </div>
