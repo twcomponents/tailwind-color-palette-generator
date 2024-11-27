@@ -160,7 +160,7 @@
 
     const nearest = nearestColor.from(colors);
 
-    colorName.value = nearest(color);
+    colorName.value = nearest(color) ?? 'Awesome Primary Color';
   };
 
   // #endregion
@@ -203,7 +203,7 @@
 
     const nearest = nearestColor.from(colors);
 
-    secondaryColorName.value = nearest(color);
+    secondaryColorName.value = nearest(color) ?? 'Awesome Secondary Color';
   };
 
   const addSecondaryColor = () => {
