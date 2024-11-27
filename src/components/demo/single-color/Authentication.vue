@@ -14,7 +14,7 @@
 <script setup lang="ts">
   import SignIn from './SignIn.vue';
   import SignUp from './SignUp.vue';
-  import CopyCode from '@/components/demo/single-color/CopyCode.vue';
+  import CopyCode from '@/components/features/CopyCode.vue';
 
   const code = `
   <div class="grid md:grid-cols-2 items-center justify-center gap-4">

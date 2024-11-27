@@ -66,7 +66,7 @@
   <section
     class="relative flex flex-col w-full py-10"
     @mousemove="onDemoAreaMouseMove($event)"
-    @mouseleave="onDemoAreaMouseLeave($event)"
+    @mouseleave="onDemoAreaMouseLeave()"
   >
     <Badges />
     <Buttons />
@@ -92,23 +92,22 @@
   import Spinners from '@/components/demo/single-color/Spinners.vue';
   import Authentication from '@/components/demo/single-color/Authentication.vue';
 
-  import ColorHint from '@/components/ColorHint.vue';
+  // feature components
+  import ColorPicker from '@/components/features/ColorPicker.vue';
+  import ColorPalette from '@/components/features/ColorPalette.vue';
+  import ColorPalette2 from '@/components/features/ColorPalette2.vue';
+  import ColorHint from '@/components/features/ColorHint.vue';
 
   // shared
   import { IColorHint } from '@/shared/models/color';
-
-  // components
-  import ColorPicker from '@/components/ColorPicker.vue';
-  import ColorPalette from '@/components/ColorPalette.vue';
-  import ColorPalette2 from '@/components/ColorPalette2.vue';
 
   // third-party
   import tailwindcssPaletteGenerator from '@bobthered/tailwindcss-palette-generator';
   import { Plus } from 'lucide-vue-next';
   import nearestColor from 'nearest-color';
   import { colornames } from 'color-name-list';
-  import CopyCode from '@/components/demo/single-color/CopyCode.vue';
 
+  // defs
   const route = useRoute();
   const router = useRouter();
 
