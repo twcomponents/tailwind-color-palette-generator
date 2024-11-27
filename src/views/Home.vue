@@ -303,6 +303,15 @@
 
     // reset secondary color palette
     secondaryColorPalette.value = null;
+
+    if (primary.value) {
+      router.push({
+        name: 'home-static',
+        params: {
+          primary: primary.value,
+        },
+      });
+    }
   };
 
   // #endregion
