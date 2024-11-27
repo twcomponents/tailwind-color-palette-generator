@@ -45,6 +45,9 @@
   import { Shuffle } from 'lucide-vue-next';
   import tippy from 'tippy.js';
 
+  // shared
+  import ColorUtil from '@/shared/utils/color.util';
+
   const props = defineProps<{
     pureColor: string;
   }>();
@@ -54,13 +57,7 @@
   const pureColor = ref<string>('#ffffff');
 
   const generateRandomColor = () => {
-    let color;
-
-    do {
-      color = `#${Math.floor(Math.random() * 16777215)
-        .toString(16)
-        .padStart(6, '0')}`;
-    } while (color === '#ffffff');
+    const color = ColorUtil.getRandomColor();
 
     pureColor.value = color;
 
