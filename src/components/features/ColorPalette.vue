@@ -14,6 +14,16 @@
       >
         {{ props.colorName.name }}
       </h1>
+
+      <!-- Right -->
+      <div class="flex flex-row gap-2 items-center">
+        <button
+          class="dark:text-zinc-400 dark:hover:text-zinc-300 transition-all duration-200 ease-in-out"
+          @click="onExportClick()"
+        >
+          Export
+        </button>
+      </div>
     </div>
 
     <!-- Color Palette -->
