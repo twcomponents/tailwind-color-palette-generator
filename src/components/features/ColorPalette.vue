@@ -17,25 +17,10 @@
       <template v-for="paletteColor in props.colorPalette">
         <ColorButton
           :paletteColor="paletteColor"
-          :themeVariableKey="ColorVariableTheme.TWC_THEME"
+          :themeVariableKey="props.themeVariableKey"
         />
       </template>
     </div>
-  </div>
-
-  <!-- Keep these colors in bundled CSS -->
-  <div class="hidden">
-    <div class="bg-twc-theme-50"></div>
-    <div class="bg-twc-theme-100"></div>
-    <div class="bg-twc-theme-200"></div>
-    <div class="bg-twc-theme-300"></div>
-    <div class="bg-twc-theme-400"></div>
-    <div class="bg-twc-theme-500"></div>
-    <div class="bg-twc-theme-600"></div>
-    <div class="bg-twc-theme-700"></div>
-    <div class="bg-twc-theme-800"></div>
-    <div class="bg-twc-theme-900"></div>
-    <div class="bg-twc-theme-950"></div>
   </div>
 </template>
 
@@ -44,13 +29,11 @@
   import ColorButton from '@/components/features/ColorButton.vue';
 
   // models
-  import {
-    IPaletteColor,
-    ColorVariableTheme,
-  } from '@/shared/models/color.model';
+  import { IPaletteColor } from '@/shared/models/color.model';
 
   const props = defineProps<{
     colorPalette: IPaletteColor[];
     colorName: any;
+    themeVariableKey: ColorVariableTheme;
   }>();
 </script>

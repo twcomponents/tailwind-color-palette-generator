@@ -83,12 +83,17 @@
     <!-- Color Palettes -->
     <div class="flex flex-col gap-5">
       <!-- Primary Color Palette -->
-      <ColorPalette :colorPalette="colorPalette" :colorName="colorName" />
+      <ColorPalette
+        :colorPalette="colorPalette"
+        :colorName="colorName"
+        :themeVariableKey="ColorVariableTheme.TWC_THEME"
+      />
 
       <!-- Secondary Color Palette -->
-      <ColorPalette2
+      <ColorPalette
         :colorPalette="secondaryColorPalette"
         :colorName="secondaryColorName"
+        :themeVariableKey="ColorVariableTheme.TWC_THEME2"
         v-if="secondaryColorPalette !== null"
       />
     </div>
@@ -128,12 +133,14 @@
   // feature components
   import ColorPicker from '@/components/features/ColorPicker.vue';
   import ColorPalette from '@/components/features/ColorPalette.vue';
-  import ColorPalette2 from '@/components/features/ColorPalette2.vue';
   import ColorHint from '@/components/features/ColorHint.vue';
   import LetterPullUp from '@/components/inspira-ui/LetterPullUp.vue';
 
   // shared
-  import { IPaletteColor } from '@/shared/models/color.model';
+  import {
+    IPaletteColor,
+    ColorVariableTheme,
+  } from '@/shared/models/color.model';
 
   // third-party
   import tailwindcssPaletteGenerator from '@bobthered/tailwindcss-palette-generator';
@@ -304,6 +311,7 @@
     // reset secondary color palette
     secondaryColorPalette.value = null;
 
+    // reset secondary color path
     if (primary.value) {
       router.push({
         name: 'home-static',
