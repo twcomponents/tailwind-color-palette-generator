@@ -91,7 +91,7 @@
 
 <script setup lang="ts">
   import { ArrowRight, Dot } from 'lucide-vue-next';
-  import CopyCode from '@/components/CopyCode.vue';
+  import CopyCode from '@/components/demo/single-color/CopyCode.vue';
 
   const code = `
   <div class="gap-4 flex items-start max-sm:flex-col justify-center">

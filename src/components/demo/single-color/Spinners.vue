@@ -62,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-  import CopyCode from '@/components/CopyCode.vue';
+  import CopyCode from '@/components/demo/single-color/CopyCode.vue';
 
   const code = `
   <div class="flex gap-4 w-full justify-center flex-wrap">

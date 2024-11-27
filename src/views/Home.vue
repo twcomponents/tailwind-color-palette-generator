@@ -86,11 +86,15 @@
   import { ref, watch, onMounted, onUnmounted } from 'vue';
   import { RouteParamsGeneric, useRoute, useRouter } from 'vue-router';
 
-  import Badges from '@/components/Badges.vue';
-  import Buttons from '@/components/Buttons.vue';
-  import Spinners from '@/components/Spinners.vue';
+  // demo components
+  import Badges from '@/components/demo/single-color/Badges.vue';
+  import Buttons from '@/components/demo/single-color/Buttons.vue';
+  import Spinners from '@/components/demo/single-color/Spinners.vue';
+  import Authentication from '@/components/demo/single-color/Authentication.vue';
+
   import ColorHint from '@/components/ColorHint.vue';
 
+  // shared
   import { IColorHint } from '@/shared/models/color';
 
   // components
@@ -103,8 +107,7 @@
   import { Plus } from 'lucide-vue-next';
   import nearestColor from 'nearest-color';
   import { colornames } from 'color-name-list';
-  import CopyCode from '@/components/CopyCode.vue';
-  import Authentication from '@/components/Authentication.vue';
+  import CopyCode from '@/components/demo/single-color/CopyCode.vue';
 
   const route = useRoute();
   const router = useRouter();
