@@ -84,7 +84,7 @@
 <script setup lang="ts">
   // native
   import { ref, watch, onMounted, onUnmounted } from 'vue';
-  import { useRoute } from 'vue-router';
+  import { RouteParamsGeneric, useRoute } from 'vue-router';
 
   import Badges from '@/components/Badges.vue';
   import Buttons from '@/components/Buttons.vue';
@@ -112,17 +112,30 @@
   const primary = ref<string>(route.params.primary as string);
   const secondary = ref<string>(route.params.secondary as string);
 
-  // Watch for changes in route parameters
-  watch(
-    () => route.params,
-    (newParams) => {
-      primary.value = newParams.primary;
-      secondary.value = newParams.secondary;
+  // #region Route Color Changes
 
-      console.log(primary.value);
-      console.log(secondary.value);
+  watch(
+    (): RouteParamsGeneric => route.params,
+    (newParams): void => {
+      primary.value = newParams.primary as string;
+      secondary.value = newParams.secondary as string;
+
+      handleRouteColorChanges();
     }
   );
+
+  const handleRouteColorChanges = (): void => {
+    if (primary.value) {
+      colorPickerRef.value?.setPureColor(primary.value);
+    }
+
+    if (secondary.value) {
+      secondaryColorPalette.value = [];
+      secondaryColorPickerRef.value?.setPureColor(secondary.value);
+    }
+  };
+
+  // #endregion
 
   // #region Primary Color Palette
 
@@ -289,24 +302,10 @@
 
   // #endregion
 
-  //   watch(
-  //     () => [route.params.color1, route.params.color2],
-  //     (newId, oldId) => {
-  //       console.log(route.params);
-  //     }
-  //   );
-
   onMounted(() => {
     window.addEventListener('keydown', handleSpacePress);
 
-    if (primary.value) {
-      colorPickerRef.value?.setPureColor(primary.value);
-    }
-
-    if (secondary.value) {
-      secondaryColorPalette.value = [];
-      secondaryColorPickerRef.value?.setPureColor(secondary.value);
-    }
+    handleRouteColorChanges();
   });
 
   onUnmounted(() => {
