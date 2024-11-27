@@ -1,14 +1,14 @@
 <template>
   <section class="flex flex-col w-full py-10">
-    <div class="mt-8 md:mt-16 md:mb-6 mb-6">
+    <div class="mt-8 mb-6 md:mt-16 md:mb-6">
       <div class="md:my-14 md:mb-8">
-        <div class="md:mb-12 text-center">
-          <div class="text-5xl font-bold text-color w-full">
+        <div class="text-center md:mb-12">
+          <div class="w-full text-5xl font-bold text-color">
             Tailwind CSS
             <br />
             Color Palette Generator
           </div>
-          <p class="text-zinc-500 font-thin mt-6 text-xl">
+          <p class="mt-6 text-xl font-thin text-zinc-500">
             Press
             <button
               class="inline-block border border-gray-500 px-1 text-base font-semibold rounded-[5px] h-[25px] hover:bg-twc-theme-400 hover:text-white transition duration-200 ease-in-out align-baseline"
@@ -24,7 +24,7 @@
           </p>
         </div>
 
-        <div class="flex flex-col gap-5 max-w-lg mx-auto">
+        <div class="flex flex-col max-w-lg gap-5 mx-auto">
           <ColorPicker ref="colorPickerRef" @change="onColorChange($event)" />
 
           <template v-if="secondaryColorPalette !== null">
@@ -35,9 +35,9 @@
           </template>
         </div>
 
-        <div class="justify-center mt-2 hidden md:flex">
+        <div class="justify-center hidden mt-2 md:flex">
           <button
-            class="flex items-center gap-1 cursor-pointer text-color-muted-extra p-4"
+            class="flex items-center gap-1 p-4 cursor-pointer text-color-muted-extra"
             @click="addSecondaryColor()"
             v-if="secondaryColorPalette === null"
           >
@@ -78,8 +78,9 @@
 
 <script setup lang="ts">
   // native
-  import { onMounted, onUnmounted } from 'vue';
-  import { ref } from 'vue';
+  import { ref, watch, onMounted, onUnmounted } from 'vue';
+  import { useRoute } from 'vue-router';
+
   import Badges from '@/components/Badges.vue';
   import Buttons from '@/components/Buttons.vue';
   import Spinners from '@/components/Spinners.vue';
@@ -97,10 +98,21 @@
   import { Plus } from 'lucide-vue-next';
   import nearestColor from 'nearest-color';
   import { colornames } from 'color-name-list';
-  import Navbar from '@/components/Navbar.vue';
   import CopyCode from '@/components/CopyCode.vue';
   import Authentication from '@/components/Authentication.vue';
 
+  const route = useRoute();
+  const primary = ref(route.params.primary);
+  const secondary = ref(route.params.secondary);
+
+  // Watch for changes in route parameters
+  watch(
+    () => route.params,
+    (newParams) => {
+      primary.value = newParams.primary;
+      secondary.value = newParams.secondary;
+    }
+  );
   // #region Primary Color Palette
 
   const colorPalette = ref<any[]>([]);
@@ -265,6 +277,13 @@
   };
 
   // #endregion
+
+  //   watch(
+  //     () => [route.params.color1, route.params.color2],
+  //     (newId, oldId) => {
+  //       console.log(route.params);
+  //     }
+  //   );
 
   onMounted(() => {
     window.addEventListener('keydown', handleSpacePress);

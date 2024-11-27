@@ -1,12 +1,26 @@
-import { createMemoryHistory, createRouter } from 'vue-router';
+import { createWebHistory, createRouter } from 'vue-router';
 
+// views
 import Home from './views/Home.vue';
-
-const routes = [{ path: '/', component: Home }];
+import NotFound from './views/NotFound.vue';
 
 const router = createRouter({
-  history: createMemoryHistory(),
-  routes,
+  history: createWebHistory(),
+  routes: [
+    // home
+    { name: 'home', path: '/', component: Home },
+    // handles /:primary/:secondary
+    {
+      name: 'params',
+      path: '/:primary([a-fA-F0-9]{6})/:secondary([a-fA-F0-9]{6})?',
+      component: Home,
+    },
+    // 404
+    {
+      path: '/:pathMatch(.*)*',
+      component: NotFound,
+    },
+  ],
 });
 
 export default router;
