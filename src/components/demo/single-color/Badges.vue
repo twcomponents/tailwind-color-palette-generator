@@ -1,6 +1,17 @@
 <template>
   <div class="default-container py-10 relative">
-    <h2 class="text-4xl font-semibold text-center mb-6">Badges</h2>
+    <h2
+      v-motion
+      :initial="{ opacity: 0, y: 40 }"
+      :visible-once="{
+        y: 0,
+        opacity: 1,
+      }"
+      :duration="300"
+      class="text-4xl font-semibold text-center mb-6"
+    >
+      Badges
+    </h2>
     <div class="absolute top-12 right-6">
       <CopyCode :code="code" />
     </div>

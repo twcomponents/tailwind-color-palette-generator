@@ -2,15 +2,31 @@
   <section class="flex flex-col w-full py-10">
     <div class="mt-8 mb-6 md:mt-16 md:mb-6">
       <div class="md:my-14 md:mb-8">
-        <div class="text-center md:mb-12">
-          <div class="w-full text-5xl font-bold text-color">
-            Tailwind CSS
-            <br />
-            Color Palette Generator
+        <div class="md:mb-12 text-center">
+          <div class="text-5xl font-bold text-color w-full">
+            <LetterPullUp
+              words="Tailwind CSS"
+              :delay="30"
+              class="text-black dark:text-white"
+            />
+            <LetterPullUp
+              words="Color Palette Generator"
+              :delay="30"
+              class="text-black dark:text-white"
+            />
           </div>
           <p class="mt-6 text-xl font-thin text-zinc-500">
             Press
             <button
+              v-motion
+              :initial="{ color: '#6b7280', borderColor: '#6b7280' }"
+              :enter="{
+                color: '#e4e4e7',
+                borderColor: '#e4e4e7',
+                opacity: 1,
+              }"
+              :delay="500"
+              :duration="500"
               class="inline-block border border-gray-500 px-1 text-base font-semibold rounded-[5px] h-[25px] hover:bg-twc-theme-400 hover:text-white transition duration-200 ease-in-out align-baseline"
               :class="{
                 'bg-twc-theme-600 text-zinc-200 border-zinc-200': spacebarPress,
@@ -97,6 +113,7 @@
   import ColorPalette from '@/components/features/ColorPalette.vue';
   import ColorPalette2 from '@/components/features/ColorPalette2.vue';
   import ColorHint from '@/components/features/ColorHint.vue';
+  import LetterPullUp from '@/components/inspira-ui/LetterPullUp.vue';
 
   // shared
   import { IColorHint } from '@/shared/models/color';
