@@ -2,6 +2,7 @@
   <div class="flex flex-col gap-2 items-center">
     <!-- Color Button -->
     <button
+      class="flex flex-col items-center justify-center w-20 h-20 rounded-[10px] border dark:border-zinc-700"
       :class="[
         `bg-${props.themeVariableKey}-${paletteColor.level}`,
         paletteColor.level >= 50 &&
