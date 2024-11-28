@@ -199,6 +199,9 @@
         minimap: {
           enabled: false,
         },
+        stickyScroll: {
+          enabled: false,
+        },
       });
     }
   };
