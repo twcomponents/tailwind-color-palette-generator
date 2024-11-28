@@ -246,6 +246,9 @@
     editor?.getModel()?.updateOptions({
       language: option.language,
     });
+
+    // scroll to top
+    editor?.setScrollPosition({ scrollTop: 0 });
   };
 
   const onModalClose = () => {
