@@ -62,6 +62,8 @@
   const copied = ref(false);
 
   const handleCopy = (event: KeyboardEvent) => {
+    if (!props.isVisible) return;
+
     if ((event.metaKey || event.ctrlKey) && event.key === 'c') {
       copied.value = true;
 
