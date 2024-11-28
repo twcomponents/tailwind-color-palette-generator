@@ -2,6 +2,25 @@ import { IPaletteColor } from '../models/color.model';
 import _ from 'lodash';
 
 export default class ExportUtil {
+  public static exportAsTailwindHex(
+    colorPalette: IPaletteColor[],
+    paletteName: string
+  ): string {
+    const formattedData: string[] = colorPalette.map((color: IPaletteColor) => {
+      return `\n\t\t\t\t\t\t'${color.level}': '${color.color}'`;
+    });
+
+    return `export default {
+            theme: {
+                extend: {
+                    colors: {
+                        ${_.snakeCase(paletteName)}: {${formattedData.join(',')}
+                    },
+                },
+            },
+        };`;
+  }
+
   /**
    * Export the color palette as CSS format.
    *

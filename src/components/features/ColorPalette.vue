@@ -206,13 +206,17 @@
   const onExportOptionClick = async (option: IExportOption) => {
     selectedExportOption.value = option;
 
-    if (option.value === 'css_var') {
+    if (option.value === 'tailwind_hex') {
+      exportOutput.value = ExportUtil.exportAsTailwindHex(
+        props.colorPalette,
+        props.colorName.name
+      );
+    } else if (option.value === 'css_var') {
       exportOutput.value = ExportUtil.exportAsCss(
         props.colorPalette,
         props.colorName.name
       );
-    }
-    if (option.value === 'scss_var') {
+    } else if (option.value === 'scss_var') {
       exportOutput.value = ExportUtil.exportAsScss(
         props.colorPalette,
         props.colorName.name
