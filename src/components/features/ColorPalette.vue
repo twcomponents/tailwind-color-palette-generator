@@ -206,6 +206,12 @@
   const onExportOptionClick = async (option: IExportOption) => {
     selectedExportOption.value = option;
 
+    if (option.value === 'css_var') {
+      exportOutput.value = ExportUtil.exportAsCss(
+        props.colorPalette,
+        props.colorName.name
+      );
+    }
     if (option.value === 'scss_var') {
       exportOutput.value = ExportUtil.exportAsScss(
         props.colorPalette,
@@ -218,6 +224,7 @@
       );
     }
 
+    // update editor value
     editor?.getModel()?.setValue(exportOutput.value);
 
     // change language
