@@ -1,10 +1,10 @@
 <template>
   <div
-    class="border relative border-zinc-700 overflow-hidden h-full rounded-3xl p-6 w-full"
+    class="border relative border-zinc-200 dark:border-zinc-700 overflow-hidden h-full rounded-3xl p-6 w-full"
   >
     <form class="relative z-10 space-y-4">
       <div class="mb-8">
-        <h3 class="text-white text-3xl font-bold">Sign up</h3>
+        <h3 class="dark:text-white text-black text-3xl font-bold">Sign up</h3>
         <p class="text-zinc-400 text-sm mt-2 leading-relaxed">
           Sign up for a new account and start your journey with us. Let's get
           started.
@@ -12,7 +12,9 @@
       </div>
 
       <div>
-        <label class="text-zinc-400 text-sm mb-2 block">User name</label>
+        <label for="username" class="text-zinc-400 text-sm mb-2 block">
+          User name
+        </label>
         <div class="relative flex items-center">
           <input
             name="username"
@@ -105,7 +107,7 @@
     </form>
 
     <div
-      class="bg-gradient-to-bl from-twc-theme-400 via-black to-black absolute top-0 left-0 w-full h-full opacity-50"
+      class="bg-gradient-to-bl from-twc-theme-400 dark:via-black dark:to-black via-white to-white absolute top-0 left-0 w-full h-full opacity-50"
     ></div>
   </div>
 </template>
