@@ -40,6 +40,7 @@
               <!-- Close -->
               <AlertDialogCancel
                 class="border-none border-zinc-800 p-2 transition-all duration-200 hover:scale-125"
+                @click="onModalClose()"
               >
                 <X />
               </AlertDialogCancel>
@@ -120,7 +121,7 @@
     AlertDialogTitle,
     AlertDialogTrigger,
   } from '@/components/ui/alert-dialog';
-  import { onMounted, ref } from 'vue';
+  import { onUnmounted, ref } from 'vue';
 
   import { X } from 'lucide-vue-next';
   import ExportUtil from '@/shared/utils/export.util';
@@ -247,5 +248,13 @@
     });
   };
 
-  onMounted(async () => {});
+  const onModalClose = () => {
+    editor?.dispose();
+    editor = null;
+    selectedExportOption.value = exportOptions[0];
+  };
+
+  onUnmounted(() => {
+    onModalClose();
+  });
 </script>
