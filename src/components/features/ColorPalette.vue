@@ -22,23 +22,56 @@
           <AlertDialogTrigger as-child>
             <button
               class="dark:text-zinc-400 dark:hover:text-zinc-300 transition-all duration-200 ease-in-out"
-              @click="onExportClick()"
             >
               Export
             </button>
           </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </AlertDialogDescription>
+
+          <AlertDialogContent class="bg-zinc-950 border dark:border-zinc-800">
+            <AlertDialogHeader
+              class="flex flex-row justify-between border-b border-zinc-900 pb-2"
+            >
+              <AlertDialogTitle class="text-lg font-thin">
+                Export your color palette as:
+              </AlertDialogTitle>
+              <AlertDialogCancel class="border border-zinc-800 p-2">
+                X
+              </AlertDialogCancel>
             </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>Continue</AlertDialogAction>
-            </AlertDialogFooter>
+
+            <AlertDialogDescription>
+              <!-- Body -->
+              <div class="flex flex-row gap-2 divide-x divide-zinc-700">
+                <!-- Left -->
+                <div class="flex flex-col items-center">
+                  <ul class="flex flex-col gap-2">
+                    <li
+                      v-for="option in exportOptions"
+                      :key="option.value"
+                      class="group flex flex-row gap-2 items-center px-3 py-2 select-none hover:bg-zinc-900 cursor-pointer rounded-md"
+                      @click="onExportOptionClick(option)"
+                    >
+                      <div
+                        class="size-3 rounded-full border dark:border-zinc-800 dark:group-hover:border-zinc-700"
+                        :class="{
+                          'bg-twc-theme-500':
+                            option.value === selectedExportOption.value,
+                        }"
+                      >
+                        <!-- Placeholder -->
+                      </div>
+
+                      <button>
+                        {{ option.label }}
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Right -->
+                <div class="flex flex-col items-center pl-2"></div>
+              </div>
+            </AlertDialogDescription>
           </AlertDialogContent>
         </AlertDialog>
       </div>
@@ -64,24 +97,60 @@
   import ColorButton from '@/components/features/ColorButton.vue';
 
   // models
-  import { IPaletteColor } from '@/shared/models/color.model';
+  import {
+    ColorVariableTheme,
+    IPaletteColor,
+  } from '@/shared/models/color.model';
 
   // shadcn
   import {
     AlertDialog,
-    AlertDialogAction,
     AlertDialogCancel,
     AlertDialogContent,
     AlertDialogDescription,
-    AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
   } from '@/components/ui/alert-dialog';
+  import { ref } from 'vue';
+
+  interface IExportOption {
+    label: string;
+    value: string;
+  }
 
   const props = defineProps<{
     colorPalette: IPaletteColor[];
     colorName: any;
     themeVariableKey: ColorVariableTheme;
   }>();
+
+  const exportOptions: IExportOption[] = [
+    {
+      label: 'Tailwind (CSS Var.)',
+      value: 'tailwind',
+    },
+    {
+      label: 'Tailwind (HEX)',
+      value: 'tailwind_hex',
+    },
+    {
+      label: 'CSS Variables',
+      value: 'css_var',
+    },
+    {
+      label: 'SCSS Variables',
+      value: 'scss_var',
+    },
+    {
+      label: 'JSON (HEX)',
+      value: 'json_hex',
+    },
+  ];
+
+  const selectedExportOption = ref<IExportOption>(exportOptions[0]);
+
+  const onExportOptionClick = (option: IExportOption) => {
+    selectedExportOption.value = option;
+  };
 </script>
