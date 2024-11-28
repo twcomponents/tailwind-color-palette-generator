@@ -59,10 +59,10 @@
                     >
                       <div
                         class="size-3 rounded-full border dark:border-zinc-600 dark:group-hover:border-zinc-500"
-                        :class="{
-                          'bg-twc-theme-500':
-                            option.value === selectedExportOption.value,
-                        }"
+                        :class="[
+                          option.value === selectedExportOption.value &&
+                            `bg-${themeVariableKey}-500`,
+                        ]"
                       >
                         <!-- Placeholder -->
                       </div>
