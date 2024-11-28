@@ -22,6 +22,7 @@
           <AlertDialogTrigger as-child>
             <button
               class="dark:text-zinc-400 dark:hover:text-zinc-300 transition-all duration-200 ease-in-out"
+              @click="onExportClick()"
             >
               Export
             </button>
@@ -57,7 +58,7 @@
                       @click="onExportOptionClick(option)"
                     >
                       <div
-                        class="size-3 rounded-full border dark:border-zinc-800 dark:group-hover:border-zinc-700"
+                        class="size-3 rounded-full border dark:border-zinc-600 dark:group-hover:border-zinc-500"
                         :class="{
                           'bg-twc-theme-500':
                             option.value === selectedExportOption.value,
@@ -75,10 +76,7 @@
 
                 <!-- Right -->
                 <div class="flex flex-col items-center pl-2">
-                  <pre>
-                        {{ exportOutput }}
-                    </pre
-                  >
+                  <div id="export-editor" class="w-[420px] h-96"></div>
                 </div>
               </div>
             </AlertDialogDescription>
@@ -122,14 +120,20 @@
     AlertDialogTitle,
     AlertDialogTrigger,
   } from '@/components/ui/alert-dialog';
-  import { ref } from 'vue';
+  import { onMounted, ref } from 'vue';
 
   import { X } from 'lucide-vue-next';
   import ExportUtil from '@/shared/utils/export.util';
 
+  // third party
+  import { shikiToMonaco } from '@shikijs/monaco';
+  import * as monaco from 'monaco-editor-core';
+  import { createHighlighter } from 'shiki';
+
   interface IExportOption {
     label: string;
     value: string;
+    language?: string;
   }
 
   const props = defineProps<{
@@ -142,29 +146,64 @@
     {
       label: 'Tailwind (CSS Var.)',
       value: 'tailwind',
+      language: 'javascript',
     },
     {
       label: 'Tailwind (HEX)',
       value: 'tailwind_hex',
+      language: 'javascript',
     },
     {
       label: 'CSS Variables',
       value: 'css_var',
+      language: 'css',
     },
     {
       label: 'SCSS Variables',
       value: 'scss_var',
+      language: 'scss',
     },
     {
       label: 'JSON (HEX)',
       value: 'json_hex',
+      language: 'json',
     },
   ];
 
   const selectedExportOption = ref<IExportOption>(exportOptions[0]);
   const exportOutput = ref<string>('');
 
-  const onExportOptionClick = (option: IExportOption) => {
+  let editor: any = null;
+
+  const onExportClick = async () => {
+    await setupMonacoEditor();
+  };
+
+  const setupMonacoEditor = async () => {
+    if (!editor) {
+      const highlighter = await createHighlighter({
+        themes: ['ayu-dark'],
+        langs: ['javascript', 'json', 'scss', 'css'],
+      });
+
+      monaco.languages.register({ id: 'vue' });
+      monaco.languages.register({ id: 'typescript' });
+      monaco.languages.register({ id: 'javascript' });
+
+      shikiToMonaco(highlighter, monaco);
+
+      editor = monaco.editor.create(document.getElementById('export-editor'), {
+        value: exportOutput.value,
+        language: selectedExportOption.value.language,
+        theme: 'ayu-dark',
+        minimap: {
+          enabled: false,
+        },
+      });
+    }
+  };
+
+  const onExportOptionClick = async (option: IExportOption) => {
     selectedExportOption.value = option;
 
     if (option.value === 'scss_var') {
@@ -178,5 +217,14 @@
         props.colorName.name
       );
     }
+
+    editor?.getModel()?.setValue(exportOutput.value);
+
+    // change language
+    editor?.getModel()?.updateOptions({
+      language: option.language,
+    });
   };
+
+  onMounted(async () => {});
 </script>

@@ -32,7 +32,7 @@ export default class ExportUtil {
   ): string {
     return colorPalette
       .map((color: IPaletteColor) => {
-        return `$${paletteName}-${color.level}: ${color.color};`;
+        return `$${_.snakeCase(paletteName)}-${color.level}: ${color.color};`;
       })
       .join('\n')
       .trim();
