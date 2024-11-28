@@ -2,6 +2,14 @@ import { IPaletteColor } from '../models/color.model';
 import _ from 'lodash';
 
 export default class ExportUtil {
+  /**
+   * Export the color palette as a Tailwind CSS HEX colors configuration.
+   *
+   * @param colorPalette The color palette.
+   * @param paletteName The name of the palette.
+   * @returns A string representing the Tailwind CSS configuration with
+   *          the colors extended under the specified palette name.
+   */
   public static exportAsTailwindHex(
     colorPalette: IPaletteColor[],
     paletteName: string
