@@ -29,13 +29,18 @@
 
           <AlertDialogContent class="bg-zinc-950 border dark:border-zinc-800">
             <AlertDialogHeader
-              class="flex flex-row justify-between border-b border-zinc-900 pb-2"
+              class="flex flex-row justify-between items-center border-b border-zinc-900 pb-2"
             >
+              <!-- Title -->
               <AlertDialogTitle class="text-lg font-thin">
                 Export your color palette as:
               </AlertDialogTitle>
-              <AlertDialogCancel class="border border-zinc-800 p-2">
-                X
+
+              <!-- Close -->
+              <AlertDialogCancel
+                class="border-none border-zinc-800 p-2 transition-all duration-200 hover:scale-125"
+              >
+                <X />
               </AlertDialogCancel>
             </AlertDialogHeader>
 
@@ -113,6 +118,8 @@
     AlertDialogTrigger,
   } from '@/components/ui/alert-dialog';
   import { ref } from 'vue';
+
+  import { X } from 'lucide-vue-next';
 
   interface IExportOption {
     label: string;
