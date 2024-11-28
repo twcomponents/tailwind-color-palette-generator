@@ -144,14 +144,14 @@
 
   const exportOptions: IExportOption[] = [
     {
-      label: 'Tailwind (CSS Var.)',
-      value: 'tailwind',
-      language: 'javascript',
-    },
-    {
       label: 'Tailwind (HEX)',
       value: 'tailwind_hex',
       language: 'javascript',
+    },
+    {
+      label: 'Tailwind (CSS Var.)',
+      value: 'tailwind_css_var',
+      language: 'html',
     },
     {
       label: 'CSS Variables',
@@ -177,13 +177,15 @@
 
   const onExportClick = async () => {
     await setupMonacoEditor();
+
+    onExportOptionClick(selectedExportOption.value);
   };
 
   const setupMonacoEditor = async () => {
     if (!editor) {
       const highlighter = await createHighlighter({
         themes: ['ayu-dark'],
-        langs: ['javascript', 'json', 'scss', 'css'],
+        langs: ['html', 'javascript', 'json', 'scss', 'css'],
       });
 
       monaco.languages.register({ id: 'vue' });
@@ -211,6 +213,11 @@
 
     if (option.value === 'tailwind_hex') {
       exportOutput.value = ExportUtil.exportAsTailwindHex(
+        props.colorPalette,
+        props.colorName.name
+      );
+    } else if (option.value === 'tailwind_css_var') {
+      exportOutput.value = ExportUtil.exportAsTailwindCssVariables(
         props.colorPalette,
         props.colorName.name
       );

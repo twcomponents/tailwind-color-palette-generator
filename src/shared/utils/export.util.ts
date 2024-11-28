@@ -2,6 +2,31 @@ import { IPaletteColor } from '../models/color.model';
 import _ from 'lodash';
 
 export default class ExportUtil {
+  public static exportAsTailwindCssVariables(
+    colorPalette: IPaletteColor[],
+    paletteName: string
+  ): string {
+    const formattedData: string[] = colorPalette.map((color: IPaletteColor) => {
+      return `\n\t\t\t\t'${color.level}': var(--'${color.color}')`;
+    });
+
+    let output = `// Add the following to your tailwind.config.js file\n
+export default {
+    theme: {
+        extend: {
+            colors: {
+                ${_.snakeCase(paletteName)}: {${formattedData.join(',')}
+            },
+        },
+    },
+};`;
+
+    output += `\n\n// Add the following to your CSS file\n\n`;
+    output += this.exportAsCss(colorPalette, paletteName);
+
+    return output;
+  }
+
   /**
    * Export the color palette as a Tailwind CSS HEX colors configuration.
    *
@@ -15,18 +40,18 @@ export default class ExportUtil {
     paletteName: string
   ): string {
     const formattedData: string[] = colorPalette.map((color: IPaletteColor) => {
-      return `\n\t\t\t\t\t\t'${color.level}': '${color.color}'`;
+      return `\n\t\t\t\t'${color.level}': '${color.color}'`;
     });
 
     return `export default {
-            theme: {
-                extend: {
-                    colors: {
-                        ${_.snakeCase(paletteName)}: {${formattedData.join(',')}
-                    },
-                },
+    theme: {
+        extend: {
+            colors: {
+                ${_.snakeCase(paletteName)}: {${formattedData.join(',')}
             },
-        };`;
+        },
+    },
+};`;
   }
 
   /**
