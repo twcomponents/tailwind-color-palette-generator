@@ -26,6 +26,9 @@ importers:
       color-name-list:
         specifier: ^11.0.0
         version: 11.0.0
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       lucide-vue-next:
         specifier: ^0.462.0
         version: 0.462.0(vue@3.5.13(typescript@5.7.2))
@@ -54,6 +57,9 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0(@aesoper/normal-utils@0.1.5)(@popperjs/core@2.11.8)(@vueuse/core@11.3.0(vue@3.5.13(typescript@5.7.2)))(gradient-parser@1.0.2)(lodash-es@4.17.21)(tinycolor2@1.6.0)(vue-types@4.2.1(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))
     devDependencies:
+      '@types/lodash':
+        specifier: ^4.17.13
+        version: 4.17.13
       '@types/nearest-color':
         specifier: ^0.4.1
         version: 0.4.1
@@ -608,6 +614,9 @@ packages:
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
+
+  '@types/lodash@4.17.13':
+    resolution: {integrity: sha512-lfx+dftrEZcdBPczf9d0Qv0x+j/rfNCMuC6OcfXmO8gkfeNAY88PgKUbvG56whcN23gc27yenwF6oJZXGFpYxg==}
 
   '@types/nearest-color@0.4.1':
     resolution: {integrity: sha512-nxe9cdPrS0Gh3FRxDSHyB6Ep3OCCKqqBAYTj0EyT21aInkNESV9Vm0IS+ibeqkycSjadlAHmworjBgqz266S3w==}
@@ -2394,6 +2403,8 @@ snapshots:
       vue: 3.5.13(typescript@5.7.2)
 
   '@types/estree@1.0.6': {}
+
+  '@types/lodash@4.17.13': {}
 
   '@types/nearest-color@0.4.1': {}
 

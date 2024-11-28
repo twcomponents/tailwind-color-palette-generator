@@ -33,7 +33,7 @@
             >
               <!-- Title -->
               <AlertDialogTitle class="text-lg font-thin">
-                Export your color palette as:
+                Export your color palette: "{{ props.colorName.name }}"
               </AlertDialogTitle>
 
               <!-- Close -->
@@ -74,7 +74,12 @@
                 </div>
 
                 <!-- Right -->
-                <div class="flex flex-col items-center pl-2"></div>
+                <div class="flex flex-col items-center pl-2">
+                  <pre>
+                        {{ exportOutput }}
+                    </pre
+                  >
+                </div>
               </div>
             </AlertDialogDescription>
           </AlertDialogContent>
@@ -120,6 +125,7 @@
   import { ref } from 'vue';
 
   import { X } from 'lucide-vue-next';
+  import ExportUtil from '@/shared/utils/export.util';
 
   interface IExportOption {
     label: string;
@@ -156,8 +162,16 @@
   ];
 
   const selectedExportOption = ref<IExportOption>(exportOptions[0]);
+  const exportOutput = ref<string>('');
 
   const onExportOptionClick = (option: IExportOption) => {
     selectedExportOption.value = option;
+
+    if (option.value === 'json_hex') {
+      exportOutput.value = ExportUtil.exportAsJson(
+        props.colorPalette,
+        props.colorName.name
+      );
+    }
   };
 </script>
