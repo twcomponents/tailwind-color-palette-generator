@@ -167,7 +167,12 @@
   const onExportOptionClick = (option: IExportOption) => {
     selectedExportOption.value = option;
 
-    if (option.value === 'json_hex') {
+    if (option.value === 'scss_var') {
+      exportOutput.value = ExportUtil.exportAsScss(
+        props.colorPalette,
+        props.colorName.name
+      );
+    } else if (option.value === 'json_hex') {
       exportOutput.value = ExportUtil.exportAsJson(
         props.colorPalette,
         props.colorName.name
