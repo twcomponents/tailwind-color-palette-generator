@@ -33,7 +33,8 @@
               :duration="500"
               class="inline-block border border-gray-500 px-1 text-base font-semibold rounded-[5px] h-[25px] hover:bg-twc-theme-400 hover:text-white transition duration-200 ease-in-out align-baseline"
               :class="{
-                'bg-twc-theme-600 text-zinc-200 border-zinc-200': spacebarPress,
+                'bg-twc-theme-600 dark:text-zinc-200 dark:border-zinc-200':
+                  spacebarPress,
               }"
               @click="generateRandomColors()"
             >

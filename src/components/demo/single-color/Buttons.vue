@@ -25,7 +25,7 @@
           opacity: 1,
         }"
         :duration="200"
-        class="rounded-3xl border border-zinc-700 p-4 w-full"
+        class="rounded-3xl border border-zinc-200 dark:border-zinc-700 p-4 w-full"
       >
         <h2 class="font-bold mb-4 flex items-center">
           Buttons
@@ -61,7 +61,7 @@
         }"
         :delay="100"
         :duration="200"
-        class="rounded-3xl border border-zinc-700 p-4 w-full"
+        class="rounded-3xl border border-zinc-200 dark:border-zinc-700 p-4 w-full"
       >
         <h2 class="font-bold mb-4 flex items-center">
           Buttons
@@ -97,7 +97,7 @@
         }"
         :delay="200"
         :duration="200"
-        class="rounded-3xl border border-zinc-700 p-4 w-full"
+        class="rounded-3xl border border-zinc-200 dark:border-zinc-700 p-4 w-full"
       >
         <h2 class="font-bold mb-4 flex items-center">
           Buttons
@@ -136,7 +136,7 @@
   const code = `
   <div class="gap-4 flex items-start max-sm:flex-col justify-center">
       <!-- Solid Buttons -->
-      <div class="rounded-3xl border border-zinc-700 p-4 w-full">
+      <div class="rounded-3xl border border-zinc-200 dark:border-zinc-700 p-4 w-full">
         <h2 class="font-bold mb-4 flex items-center">
           Buttons
           <Dot />
@@ -162,7 +162,7 @@
       </div>
 
       <!-- Outline Buttons -->
-      <div class="rounded-3xl border border-zinc-700 p-4 w-full">
+      <div class="rounded-3xl border border-zinc-200 dark:border-zinc-700 p-4 w-full">
         <h2 class="font-bold mb-4 flex items-center">
           Buttons
           <Dot />
@@ -188,7 +188,7 @@
       </div>
 
       <!-- Icon Buttons -->
-      <div class="rounded-3xl border border-zinc-700 p-4 w-full">
+      <div class="rounded-3xl border border-zinc-200 dark:border-zinc-700 p-4 w-full">
         <h2 class="font-bold mb-4 flex items-center">
           Buttons
           <Dot />

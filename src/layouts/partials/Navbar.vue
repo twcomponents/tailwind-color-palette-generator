@@ -1,7 +1,3 @@
-<script setup lang="ts">
-  import { Github } from 'lucide-vue-next';
-</script>
-
 <template>
   <div
     class="fixed top-0 left-0 py-4 w-full bg-white/80 dark:bg-zinc-900/80 border-b dark:border-zinc-800 z-50 backdrop-blur-md"
@@ -13,12 +9,20 @@
         <span class="text-twc-theme2-400">Palette</span>
       </RouterLink>
 
-      <a
-        href="https://github.com/twcomponents/tailwind-color-palette-generator"
-        class="size-10 rounded-md border border-zinc-700 hover:bg-zinc-600 duration-200 flex items-center justify-center"
-      >
-        <Github class="size-5 dark:text-white" />
-      </a>
+      <div class="flex items-center gap-2.5">
+        <a
+          href="https://github.com/twcomponents/tailwind-color-palette-generator"
+          class="size-10 rounded-md border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 duration-200 flex items-center justify-center"
+        >
+          <Github class="size-5 dark:text-white" />
+        </a>
+        <ThemeSwitcher />
+      </div>
     </nav>
   </div>
 </template>
+
+<script setup lang="ts">
+  import ThemeSwitcher from '@/components/features/ThemeSwitcher.vue';
+  import { Github } from 'lucide-vue-next';
+</script>

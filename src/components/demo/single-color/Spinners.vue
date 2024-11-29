@@ -24,7 +24,7 @@
         <div class="relative">
           <!-- Outer Ring-->
           <div
-            class="size-20 rounded-full absolute border-[4px] border-solid border-zinc-700"
+            class="size-20 rounded-full absolute border-[4px] border-solid border-zinc-200 dark:border-zinc-700"
           ></div>
 
           <!-- Inner Ring -->
@@ -42,7 +42,7 @@
         <div class="relative">
           <!-- Outer Ring-->
           <div
-            class="size-20 rounded-full absolute border-[4px] border-dashed border-zinc-700"
+            class="size-20 rounded-full absolute border-[4px] border-dashed border-zinc-200 dark:border-zinc-700"
           ></div>
 
           <!-- Inner Ring -->
@@ -85,7 +85,7 @@
       <div class="relative">
         <!-- Outer Ring-->
         <div
-          class="size-20 rounded-full absolute border-[4px] border-solid border-zinc-700"
+          class="size-20 rounded-full absolute border-[4px] border-solid border-zinc-200 dark:border-zinc-700"
         ></div>
 
         <!-- Inner Ring -->
@@ -103,7 +103,7 @@
       <div class="relative">
         <!-- Outer Ring-->
         <div
-          class="size-20 rounded-full absolute border-[4px] border-dashed border-zinc-700"
+          class="size-20 rounded-full absolute border-[4px] border-dashed border-zinc-200 dark:border-zinc-700"
         ></div>
 
         <!-- Inner Ring -->
