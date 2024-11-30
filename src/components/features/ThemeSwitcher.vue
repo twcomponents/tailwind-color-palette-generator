@@ -62,10 +62,18 @@
     }
   };
 
-  onMounted(() => {
-    themeMode.value = (localStorage.themeMode as ThemeMode) ?? ThemeMode.SYSTEM;
+  const handleThemeChange = (event: MediaQueryListEvent) => {
+    if (themeMode.value === ThemeMode.SYSTEM) {
+      appTheme.value = event.matches ? AppTheme.DARK : AppTheme.LIGHT;
 
-    console.log(themeMode.value);
+      syncTheme(appTheme.value);
+    }
+  };
+
+  onMounted(() => {
+    // #region Initial theme setup
+
+    themeMode.value = (localStorage.themeMode as ThemeMode) ?? ThemeMode.SYSTEM;
 
     if (themeMode.value === ThemeMode.SYSTEM) {
       appTheme.value = getCurrentBrowserTheme();
@@ -76,5 +84,12 @@
     }
 
     syncTheme(appTheme.value);
+
+    // #endregion
+
+    // handle theme change
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', handleThemeChange);
   });
 </script>
