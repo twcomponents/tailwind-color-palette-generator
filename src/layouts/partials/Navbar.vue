@@ -10,12 +10,17 @@
       </RouterLink>
 
       <div class="flex items-center gap-2.5">
-        <a
+        <github-button
           href="https://github.com/twcomponents/tailwind-color-palette-generator"
-          class="size-10 rounded-md border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 duration-200 flex items-center justify-center"
+          data-color-scheme="no-preference: light; light: light; dark: dark;"
+          data-icon="octicon-star"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star twcomponents/tailwind-color-palette-generator on GitHub"
+          class="h-5"
         >
-          <Github class="size-5 dark:text-white" />
-        </a>
+          Star
+        </github-button>
 
         <ThemeSwitcher />
       </div>
@@ -26,5 +31,5 @@
 <script setup lang="ts">
   import ThemeSwitcher from '@/components/features/ThemeSwitcher.vue';
 
-  import { Github } from 'lucide-vue-next';
+  import GithubButton from 'vue-github-button';
 </script>

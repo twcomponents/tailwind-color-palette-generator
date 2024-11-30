@@ -56,6 +56,9 @@ importers:
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.7.2)
+      vue-github-button:
+        specifier: ^3.1.3
+        version: 3.1.3
       vue-router:
         specifier: '4'
         version: 4.5.0(vue@3.5.13(typescript@5.7.2))
@@ -1131,6 +1134,9 @@ packages:
     resolution: {integrity: sha512-8EHPljDvs7qKykr6uw8b+lqLiUc/vUg+KVTI0uND4s63TdsZM2Xus3mflvF0DDG9SiM4RlCkFGL+7aAjRmV7KA==}
     hasBin: true
 
+  github-buttons@2.29.1:
+    resolution: {integrity: sha512-TV3YgAKda5hPz75n7QXmGCsSzgVya1vvmBieebg3EB5ScmashTZ0FldViG1aU2d4V5rcAGrtQ7k5uAaCo0A4PA==}
+
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
@@ -1961,6 +1967,9 @@ packages:
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=6.0.0'
+
+  vue-github-button@3.1.3:
+    resolution: {integrity: sha512-ZdOnUuYJL/wUsxISsC96TARzCdf1twaWooZoI14+g4RHsJltPY+Agw6Ox6pjuMqMX0uhSK1JOMFUFNCQGlcZGA==}
 
   vue-router@4.5.0:
     resolution: {integrity: sha512-HDuk+PuH5monfNuY+ct49mNmkCRK4xJAV9Ts4z9UFc4rzdDnxQLyCMGGc8pKhZhHTVzfanpNwB/lwqevcBwI4w==}
@@ -3166,6 +3175,8 @@ snapshots:
       tar: 6.2.1
     optional: true
 
+  github-buttons@2.29.1: {}
+
   glob-parent@5.1.2:
     dependencies:
       is-glob: 4.0.3
@@ -4050,6 +4061,10 @@ snapshots:
       semver: 7.6.3
     transitivePeerDependencies:
       - supports-color
+
+  vue-github-button@3.1.3:
+    dependencies:
+      github-buttons: 2.29.1
 
   vue-router@4.5.0(vue@3.5.13(typescript@5.7.2)):
     dependencies:
