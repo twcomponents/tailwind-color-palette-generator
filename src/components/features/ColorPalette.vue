@@ -35,7 +35,7 @@
               class="flex flex-row justify-between items-center border-b border-gray-200 dark:border-zinc-900 pb-2"
             >
               <!-- Title -->
-              <AlertDialogTitle class="text-lg font-thin">
+              <AlertDialogTitle class="text-lg font-semibold">
                 Export your color palette: "{{ props.colorName.name }}"
               </AlertDialogTitle>
 
