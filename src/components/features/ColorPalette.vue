@@ -28,9 +28,11 @@
             </button>
           </AlertDialogTrigger>
 
-          <AlertDialogContent class="bg-zinc-950 border dark:border-zinc-800">
+          <AlertDialogContent
+            class="bg-white dark:bg-zinc-950 border-gray-300 dark:border-zinc-800"
+          >
             <AlertDialogHeader
-              class="flex flex-row justify-between items-center border-b border-zinc-900 pb-2"
+              class="flex flex-row justify-between items-center border-b border-gray-200 dark:border-zinc-900 pb-2"
             >
               <!-- Title -->
               <AlertDialogTitle class="text-lg font-thin">
@@ -39,7 +41,7 @@
 
               <!-- Close -->
               <AlertDialogCancel
-                class="border-none border-zinc-800 p-2 transition-all duration-200 hover:scale-125"
+                class="border-gray-200 dark:border-zinc-800 p-2 transition-all duration-200 hover:scale-125"
                 @click="onModalClose()"
               >
                 <X />
@@ -48,18 +50,20 @@
 
             <AlertDialogDescription>
               <!-- Body -->
-              <div class="flex flex-row gap-2 divide-x divide-zinc-700">
+              <div
+                class="flex flex-row gap-2 divide-x divide-gray-200 dark:divide-zinc-700"
+              >
                 <!-- Left -->
                 <div class="flex flex-col items-center">
                   <ul class="flex flex-col gap-2">
                     <li
                       v-for="option in exportOptions"
                       :key="option.value"
-                      class="group flex flex-row gap-2 items-center px-3 py-2 select-none hover:bg-zinc-900 cursor-pointer rounded-md"
+                      class="group flex flex-row gap-2 items-center px-3 py-2 select-none hover:bg-gray-200 dark:hover:bg-zinc-900 cursor-pointer rounded-md"
                       @click="onExportOptionClick(option)"
                     >
                       <div
-                        class="size-3 rounded-full border dark:border-zinc-600 dark:group-hover:border-zinc-500"
+                        class="size-3 rounded-full border border-gray-300 group-hover:border-gray-400 dark:border-zinc-600 dark:group-hover:border-zinc-500"
                         :class="[
                           option.value === selectedExportOption.value &&
                             `bg-${themeVariableKey}-500`,
