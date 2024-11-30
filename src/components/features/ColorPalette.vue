@@ -50,9 +50,7 @@
 
             <AlertDialogDescription>
               <!-- Body -->
-              <div
-                class="flex flex-row gap-2 divide-x divide-gray-200 dark:divide-zinc-700"
-              >
+              <div class="flex flex-row gap-2">
                 <!-- Left -->
                 <div class="flex flex-col items-center">
                   <ul class="flex flex-col gap-2">
