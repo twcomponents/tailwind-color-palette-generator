@@ -80,8 +80,8 @@
                 </div>
 
                 <!-- Right -->
-                <div class="flex flex-col items-center pl-2">
-                  <div id="export-editor" class="w-[420px] h-96"></div>
+                <div class="flex flex-col items-center pl-4">
+                  <div id="export-editor" class="w-[500px] h-96"></div>
                 </div>
               </div>
             </AlertDialogDescription>
@@ -125,7 +125,7 @@
     AlertDialogTitle,
     AlertDialogTrigger,
   } from '@/components/ui/alert-dialog';
-  import { onUnmounted, ref } from 'vue';
+  import { onMounted, onUnmounted, ref } from 'vue';
 
   import { X } from 'lucide-vue-next';
   import ExportUtil from '@/shared/utils/export.util';
@@ -175,6 +175,8 @@
     },
   ];
 
+  const editorTheme = ref<'ayu-dark' | 'ayu-light'>('ayu-dark');
+
   const selectedExportOption = ref<IExportOption>(exportOptions[0]);
   const exportOutput = ref<string>('');
 
@@ -202,7 +204,7 @@
       editor = monaco.editor.create(document.getElementById('export-editor'), {
         value: exportOutput.value,
         language: selectedExportOption.value.language,
-        theme: 'ayu-dark',
+        theme: editorTheme.value,
         minimap: {
           enabled: false,
         },
@@ -260,6 +262,28 @@
     editor = null;
     selectedExportOption.value = exportOptions[0];
   };
+
+  const handleThemeChange = (event: MediaQueryListEvent) => {
+    console.log('Theme changed', event.matches);
+    editorTheme.value = event.matches ? 'ayu-dark' : 'ayu-light';
+
+    editor?.updateOptions({
+      theme: editorTheme.value,
+    });
+  };
+
+  onMounted(() => {
+    // handle theme change
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', handleThemeChange);
+
+    // handle intial theme
+    editorTheme.value = window.matchMedia('(prefers-color-scheme: dark)')
+      .matches
+      ? 'ayu-dark'
+      : 'ayu-light';
+  });
 
   onUnmounted(() => {
     onModalClose();
