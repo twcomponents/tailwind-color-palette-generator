@@ -132,7 +132,7 @@
   import Authentication from '@/components/demo/single-color/Authentication.vue';
 
   // feature components
-  import ColorPicker from '@/components/features/ColorPicker.vue';
+  import ColorPicker from '@/components/features/ColorBar.vue';
   import ColorPalette from '@/components/features/ColorPalette.vue';
   import ColorHint from '@/components/features/ColorHint.vue';
   import LetterPullUp from '@/components/inspira-ui/LetterPullUp.vue';
