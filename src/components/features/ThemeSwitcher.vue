@@ -4,39 +4,77 @@
     aria-label="Toggle theme"
     @click="toggleTheme()"
   >
-    <p class="hidden dark:block">
-      <Sun class="size-5 text-white" />
-    </p>
-    <p class="dark:hidden">
-      <Moon class="size-5 text-black" />
-    </p>
+    <Moon class="size-5 text-white" v-if="themeMode === ThemeMode.DARK" />
+    <Sun class="size-5 text-black" v-if="themeMode === ThemeMode.LIGHT" />
+    <MonitorSmartphone
+      class="size-5 text-black dark:text-white"
+      v-if="themeMode === ThemeMode.SYSTEM"
+    />
   </button>
 </template>
 
 <script setup lang="ts">
-  import { Moon, Sun } from 'lucide-vue-next';
-  import { onMounted } from 'vue';
+  import { Moon, Sun, MonitorSmartphone } from 'lucide-vue-next';
+  import { onMounted, ref } from 'vue';
+
+  enum ThemeMode {
+    DARK = 'dark',
+    LIGHT = 'light',
+    SYSTEM = 'system',
+  }
+
+  enum AppTheme {
+    DARK = 'dark',
+    LIGHT = 'light',
+  }
+
+  const appTheme = ref<AppTheme>(AppTheme.DARK);
+  const themeMode = ref<ThemeMode>(ThemeMode.SYSTEM);
 
   const toggleTheme = () => {
-    if (document.documentElement.classList.contains('dark')) {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = 'light';
+    if (themeMode.value === ThemeMode.SYSTEM) {
+      themeMode.value = ThemeMode.LIGHT;
+      appTheme.value = AppTheme.LIGHT;
+    } else if (themeMode.value === ThemeMode.LIGHT) {
+      themeMode.value = ThemeMode.DARK;
+      appTheme.value = AppTheme.DARK;
     } else {
+      themeMode.value = ThemeMode.SYSTEM;
+      appTheme.value = getCurrentBrowserTheme();
+    }
+
+    localStorage.themeMode = themeMode.value;
+
+    syncTheme(appTheme.value);
+  };
+
+  const getCurrentBrowserTheme = (): AppTheme => {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? AppTheme.DARK
+      : AppTheme.LIGHT;
+  };
+
+  const syncTheme = (theme: AppTheme) => {
+    if (theme === AppTheme.DARK) {
       document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
+    } else {
+      document.documentElement.classList.remove('dark');
     }
   };
 
-  // Set the initial theme
   onMounted(() => {
-    if (
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
-      document.documentElement.classList.add('dark');
+    themeMode.value = (localStorage.themeMode as ThemeMode) ?? ThemeMode.SYSTEM;
+
+    console.log(themeMode.value);
+
+    if (themeMode.value === ThemeMode.SYSTEM) {
+      appTheme.value = getCurrentBrowserTheme();
+    } else if (themeMode.value === ThemeMode.DARK) {
+      appTheme.value = AppTheme.DARK;
     } else {
-      document.documentElement.classList.remove('dark');
+      appTheme.value = AppTheme.LIGHT;
     }
+
+    syncTheme(appTheme.value);
   });
 </script>

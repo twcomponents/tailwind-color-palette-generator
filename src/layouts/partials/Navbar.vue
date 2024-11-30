@@ -16,6 +16,7 @@
         >
           <Github class="size-5 dark:text-white" />
         </a>
+
         <ThemeSwitcher />
       </div>
     </nav>
@@ -24,5 +25,6 @@
 
 <script setup lang="ts">
   import ThemeSwitcher from '@/components/features/ThemeSwitcher.vue';
+
   import { Github } from 'lucide-vue-next';
 </script>
