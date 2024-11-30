@@ -13,7 +13,7 @@
         }"
         class="text-lg font-light text-center"
       >
-        {{ props.colorName.name }}
+        {{ colorName }}
       </h1>
 
       <!-- Right -->
@@ -35,8 +35,17 @@
               class="flex flex-row justify-between items-center border-b border-gray-200 dark:border-zinc-900 pb-2"
             >
               <!-- Title -->
-              <AlertDialogTitle class="text-lg font-semibold">
-                Export your color palette: "{{ props.colorName.name }}"
+              <AlertDialogTitle
+                class="flex flex-row gap-2 items-center text-lg font-normal"
+              >
+                <span>Export your color palette as:</span>
+
+                <input
+                  type="search"
+                  v-model="colorName"
+                  placeholder="Enter palette name"
+                  class="dark:bg-zinc-950 font-thin outline-none border-b border-gray-200 dark:border-zinc-600 focus:border-gray-400 dark:focus:border-zinc-500 text-base px-2.5 py-2 w-[300px]"
+                />
               </AlertDialogTitle>
 
               <!-- Close -->
@@ -132,7 +141,7 @@
     AlertDialogTitle,
     AlertDialogTrigger,
   } from '@/components/ui/alert-dialog';
-  import { onMounted, onUnmounted, ref } from 'vue';
+  import { onMounted, onUnmounted, ref, watch } from 'vue';
 
   import { X, Copy } from 'lucide-vue-next';
   import ExportUtil from '@/shared/utils/export.util';
@@ -154,6 +163,7 @@
     themeVariableKey: ColorVariableTheme;
   }>();
 
+  const colorName = ref<string>(props.colorName.name);
   const exportOptions: IExportOption[] = [
     {
       label: 'Tailwind (HEX)',
@@ -181,9 +191,7 @@
       language: 'json',
     },
   ];
-
   const editorTheme = ref<'ayu-dark' | 'ayu-light'>('ayu-dark');
-
   const selectedExportOption = ref<IExportOption>(exportOptions[0]);
   const exportOutput = ref<string>('');
   const isOutputCopied = ref<boolean>(false);
@@ -229,27 +237,27 @@
     if (option.value === 'tailwind_hex') {
       exportOutput.value = ExportUtil.exportAsTailwindHex(
         props.colorPalette,
-        props.colorName.name
+        colorName.value
       );
     } else if (option.value === 'tailwind_css_var') {
       exportOutput.value = ExportUtil.exportAsTailwindCssVariables(
         props.colorPalette,
-        props.colorName.name
+        colorName.value
       );
     } else if (option.value === 'css_var') {
       exportOutput.value = ExportUtil.exportAsCss(
         props.colorPalette,
-        props.colorName.name
+        colorName.value
       );
     } else if (option.value === 'scss_var') {
       exportOutput.value = ExportUtil.exportAsScss(
         props.colorPalette,
-        props.colorName.name
+        colorName.value
       );
     } else if (option.value === 'json_hex') {
       exportOutput.value = ExportUtil.exportAsJson(
         props.colorPalette,
-        props.colorName.name
+        colorName.value
       );
     }
 
@@ -282,13 +290,26 @@
   };
 
   const handleThemeChange = (event: MediaQueryListEvent) => {
-    console.log('Theme changed', event.matches);
     editorTheme.value = event.matches ? 'ayu-dark' : 'ayu-light';
 
     editor?.updateOptions({
       theme: editorTheme.value,
     });
   };
+
+  watch(
+    () => props.colorName,
+    () => {
+      colorName.value = props.colorName.name;
+    }
+  );
+
+  watch(
+    () => colorName.value,
+    () => {
+      onExportOptionClick(selectedExportOption.value);
+    }
+  );
 
   onMounted(() => {
     // handle theme change
