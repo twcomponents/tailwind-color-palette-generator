@@ -10,7 +10,7 @@ export default class ExportUtil {
       return `\n\t\t\t\t'${color.level}': var(--${_.snakeCase(paletteName)}-${color.level})`;
     });
 
-    let output = `// Add the following to your tailwind.config.js file\nWarning: with this method you can't use opacity feature like: bg-theme-600/80\n
+    let output = `// Add the following to your tailwind.config.js file\n// Warning: with this method you can't use opacity feature like: bg-theme-600/80\n
 export default {
     theme: {
         extend: {
