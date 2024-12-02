@@ -4,7 +4,7 @@
   >
     <nav class="flex items-center justify-between default-container">
       <RouterLink to="/" class="font-extrabold text-3xl">
-        <span class="text-twc-theme-400">UI</span>
+        <span class="text-twc-theme-400">TWC</span>
         /
         <span class="text-twc-theme2-400">Palette</span>
       </RouterLink>
