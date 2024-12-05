@@ -217,17 +217,20 @@
 
       shikiToMonaco(highlighter, monaco);
 
-      editor = monaco.editor.create(document.getElementById('export-editor'), {
-        value: exportOutput.value,
-        language: selectedExportOption.value.language,
-        theme: editorTheme.value,
-        minimap: {
-          enabled: false,
-        },
-        stickyScroll: {
-          enabled: false,
-        },
-      });
+      editor = monaco.editor.create(
+        document.getElementById('export-editor') as HTMLElement,
+        {
+          value: exportOutput.value,
+          language: selectedExportOption.value.language,
+          theme: editorTheme.value,
+          minimap: {
+            enabled: false,
+          },
+          stickyScroll: {
+            enabled: false,
+          },
+        }
+      );
     }
   };
 
