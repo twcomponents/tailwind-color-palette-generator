@@ -304,7 +304,11 @@
     secondaryColorPalette.value?.forEach((paletteColor: IPaletteColor) => {
       const variableName = `--twc-theme2-${paletteColor.level}`;
 
-      root.style.setProperty(variableName, '#ffffff');
+      const isDarkTheme = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches;
+
+      root.style.setProperty(variableName, isDarkTheme ? '#ffffff' : '#000000');
     });
 
     // reset secondary color palette

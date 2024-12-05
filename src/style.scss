@@ -28,19 +28,39 @@
   --twc-theme-800: #904a1c;
   --twc-theme-900: #743e1a;
   --twc-theme-950: #3f1e0b;
+}
 
-  // Theme2
-  --twc-theme2-50: #fff;
-  --twc-theme2-100: #fff;
-  --twc-theme2-200: #fff;
-  --twc-theme2-300: #fff;
-  --twc-theme2-400: #fff;
-  --twc-theme2-500: #fff;
-  --twc-theme2-600: #fff;
-  --twc-theme2-700: #fff;
-  --twc-theme2-800: #fff;
-  --twc-theme2-900: #fff;
-  --twc-theme2-950: #fff;
+@media (prefers-color-scheme: light) {
+  :root {
+    --twc-theme2-50: #000000;
+    --twc-theme2-100: #000000;
+    --twc-theme2-200: #000000;
+    --twc-theme2-300: #000000;
+    --twc-theme2-400: #000000;
+    --twc-theme2-500: #000000;
+    --twc-theme2-600: #000000;
+    --twc-theme2-700: #000000;
+    --twc-theme2-800: #000000;
+    --twc-theme2-900: #000000;
+    --twc-theme2-950: #000000;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Theme2
+    --twc-theme2-50: #fff;
+    --twc-theme2-100: #fff;
+    --twc-theme2-200: #fff;
+    --twc-theme2-300: #fff;
+    --twc-theme2-400: #fff;
+    --twc-theme2-500: #fff;
+    --twc-theme2-600: #fff;
+    --twc-theme2-700: #fff;
+    --twc-theme2-800: #fff;
+    --twc-theme2-900: #fff;
+    --twc-theme2-950: #fff;
+  }
 }
 
 html,
