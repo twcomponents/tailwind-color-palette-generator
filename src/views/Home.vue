@@ -265,8 +265,8 @@
       root.style.setProperty(variableName, color);
 
       return {
-        name: variableName,
-        level: item[0],
+        label: variableName,
+        level: Number(item[0]),
         color: color,
       };
     });
@@ -280,7 +280,7 @@
 
     secondaryColorName.value = nearest(color) ?? 'Awesome Secondary Color';
 
-    const routeParams = { secondary: color.replace('#', '') };
+    const routeParams: any = { secondary: color.replace('#', '') };
 
     if (primary.value) {
       routeParams.primary = primary.value;
@@ -301,13 +301,11 @@
     const root = document.documentElement;
 
     // update CSS variables
-    secondaryColorPalette.value = secondaryColorPalette.value?.forEach(
-      (paletteColor: IPaletteColor) => {
-        const variableName = `--twc-theme2-${paletteColor.level}`;
+    secondaryColorPalette.value?.forEach((paletteColor: IPaletteColor) => {
+      const variableName = `--twc-theme2-${paletteColor.level}`;
 
-        root.style.setProperty(variableName, '#ffffff');
-      }
-    );
+      root.style.setProperty(variableName, '#ffffff');
+    });
 
     // reset secondary color palette
     secondaryColorPalette.value = null;
