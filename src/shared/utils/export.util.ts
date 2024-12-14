@@ -40,14 +40,15 @@ export default {
     paletteName: string
   ): string {
     const formattedData: string[] = colorPalette.map((color: IPaletteColor) => {
-      return `\n\t\t\t\t\t'${color.level}': '${color.color}'`;
+      return `\n                    '${color.level}': '${color.color}'`;
     });
 
     return `export default {
     theme: {
         extend: {
             colors: {
-                ${_.snakeCase(paletteName)}: {${formattedData.join(',')}\n\t\t\t\t},
+                ${_.snakeCase(paletteName)}: {${formattedData.join(',')}
+                },
             },
         },
     },
