@@ -7,7 +7,7 @@ export default class ExportUtil {
     paletteName: string
   ): string {
     const formattedData: string[] = colorPalette.map((color: IPaletteColor) => {
-      return `\n\t\t\t\t'${color.level}': var(--${_.snakeCase(paletteName)}-${color.level})`;
+      return `\n                    '${color.level}': var(--${_.snakeCase(paletteName)}-${color.level})`;
     });
 
     let output = `// Add the following to your tailwind.config.js file\n// Warning: with this method you can't use opacity feature like: bg-theme-600/80\n
@@ -16,6 +16,7 @@ export default {
         extend: {
             colors: {
                 ${_.snakeCase(paletteName)}: {${formattedData.join(',')}
+                }
             },
         },
     },
