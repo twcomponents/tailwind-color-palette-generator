@@ -92,7 +92,7 @@
 
                   <button
                     @click="onPaletteOutputCopyClick()"
-                    class="absolute right-4 -top-2 flex flex-row items-center justify-center size-10 bg-white dark:bg-zinc-950 border border-gray-300 hover:border-gray-500 dark:border-zinc-700 p-2 rounded-md text-zinc-400 hover:text-zinc-500 dark:hover:border-zinc-500 dark:text-zinc-500 dark:hover:text-zinc-400 transition-all duration-200 ease-in-out"
+                    class="absolute right-4 -bottom-2 flex flex-row items-center justify-center size-10 bg-white dark:bg-zinc-950 border border-gray-300 hover:border-gray-500 dark:border-zinc-700 p-2 rounded-md text-zinc-400 hover:text-zinc-500 dark:hover:border-zinc-500 dark:text-zinc-500 dark:hover:text-zinc-400 transition-all duration-200 ease-in-out"
                   >
                     <Copy :size="20" v-if="!isOutputCopied" />
 
