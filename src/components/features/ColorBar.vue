@@ -22,7 +22,9 @@
       <input
         type="text"
         v-model="pureColor"
-        @change="emitters('change', pureColor)"
+        @change="onColorInputChange()"
+        @input="onColorInputChange()"
+        placeholder="Enter hex code"
         class="border-none dark:bg-zinc-950 font-thin outline-none text-center"
       />
 
@@ -87,6 +89,11 @@
 
   const onCloseClick = () => {
     emitters('close');
+  };
+
+  const onColorInputChange = () => {
+    console.log('333333');
+    emitters('change', pureColor.value);
   };
 
   onMounted(() => {
