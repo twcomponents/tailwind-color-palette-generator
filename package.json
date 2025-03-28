@@ -19,7 +19,7 @@
     "clsx": "^2.1.1",
     "color-name-list": "^11.5.0",
     "lodash": "^4.17.21",
-    "lucide-vue-next": "^0.484.0",
+    "lucide-vue-next": "^0.485.0",
     "monaco-editor-core": "^0.52.2",
     "nearest-color": "^0.4.4",
     "radix-vue": "^1.9.17",
