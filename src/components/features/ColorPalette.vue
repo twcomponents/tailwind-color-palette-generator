@@ -326,7 +326,7 @@
    * Hex color decorator for monaco editor
    */
   const decorateHexColors = (editor: editor.IStandaloneCodeEditor) => {
-    const model = editor.getModel();
+    const model = editor?.getModel();
     if (!model) return;
 
     const text = model.getValue(),
