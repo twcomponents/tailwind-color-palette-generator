@@ -115,6 +115,7 @@
   import {
     IPaletteColor,
     ColorVariableTheme,
+    IColorChangeEvent,
   } from '@/shared/models/color.model';
 
   // third-party
@@ -171,12 +172,12 @@
   const colorName = ref<string>('');
   const colorPickerRef = ref<InstanceType<typeof ColorPicker> | null>(null);
 
-  const onColorChange = (color: string) => {
+  const onColorChange = (event: IColorChangeEvent) => {
     const root = document.documentElement;
 
     const newPalette = Object.entries(
       tailwindcssPaletteGenerator({
-        colors: [color],
+        colors: [event.color],
         names: ['theme'],
       }).theme
     );
@@ -201,12 +202,12 @@
 
     const nearest = nearestColor.from(colors);
 
-    colorName.value = nearest(color) ?? 'Awesome Primary Color';
+    colorName.value = nearest(event.color) ?? 'Awesome Primary Color';
 
     router.push({
       name: 'home-static',
       params: {
-        primary: color.replace('#', ''),
+        primary: event.color.replace('#', ''),
         secondary: secondary.value,
       },
     });
@@ -222,12 +223,12 @@
     null
   );
 
-  const onSecondaryColorChange = (color: string) => {
+  const onSecondaryColorChange = (event: IColorChangeEvent) => {
     const root = document.documentElement;
 
     const newPalette = Object.entries(
       tailwindcssPaletteGenerator({
-        colors: [color],
+        colors: [event.color],
         names: ['theme'],
       }).theme
     );
@@ -252,9 +253,10 @@
 
     const nearest = nearestColor.from(colors);
 
-    secondaryColorName.value = nearest(color) ?? 'Awesome Secondary Color';
+    secondaryColorName.value =
+      nearest(event.color) ?? 'Awesome Secondary Color';
 
-    const routeParams: any = { secondary: color.replace('#', '') };
+    const routeParams: any = { secondary: event.color.replace('#', '') };
 
     if (primary.value) {
       routeParams.primary = primary.value;

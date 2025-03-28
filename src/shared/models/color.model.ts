@@ -19,3 +19,8 @@ export interface IPaletteColor {
    */
   level: number;
 }
+
+export interface IColorChangeEvent {
+  color: string;
+  isValid: boolean;
+}

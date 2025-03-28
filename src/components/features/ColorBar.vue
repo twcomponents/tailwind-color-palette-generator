@@ -76,11 +76,17 @@
 
     pureColor.value = color;
 
-    emitters('change', pureColor.value);
+    emitters('change', {
+      color: pureColor.value,
+      isValid: ColorUtil.isValidHex(pureColor.value),
+    });
   };
 
   const onPureColorChange = () => {
-    emitters('change', pureColor.value);
+    emitters('change', {
+      color: pureColor.value,
+      isValid: ColorUtil.isValidHex(pureColor.value),
+    });
   };
 
   const setPureColor = (color: string) => {
@@ -92,15 +98,20 @@
   };
 
   const onColorInputChange = () => {
-    console.log('333333');
-    emitters('change', pureColor.value);
+    emitters('change', {
+      color: pureColor.value,
+      isValid: ColorUtil.isValidHex(pureColor.value),
+    });
   };
 
   onMounted(() => {
     if (props.pureColor) {
       pureColor.value = `#${props.pureColor}`;
 
-      emitters('change', pureColor.value);
+      emitters('change', {
+        color: pureColor.value,
+        isValid: ColorUtil.isValidHex(pureColor.value),
+      });
     } else {
       generateRandomColor();
     }

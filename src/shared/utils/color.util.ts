@@ -10,4 +10,10 @@ export default class ColorUtil {
 
     return color;
   }
+
+  public static isValidHex(hex: string): boolean {
+    const hexColorCodeRegex = /^#([0-9A-F]{3}|[0-9A-F]{6})$/i;
+
+    return hexColorCodeRegex.test(hex);
+  }
 }
