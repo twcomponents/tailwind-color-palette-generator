@@ -33,12 +33,16 @@
 </template>
 
 <script setup lang="ts">
-  import { IPaletteColor } from '@/shared/models/color.model';
+  // native
   import { onBeforeUnmount, onMounted, ref } from 'vue';
+
+  // models
+  import { IPaletteColor } from '@/shared/models/color.model';
+  import { IPosition } from '@/shared/models/position.model';
 
   const props = defineProps<{
     hints: IPaletteColor[];
-    position: { x: number; y: number };
+    position: IPosition;
     isVisible: boolean;
   }>();
 

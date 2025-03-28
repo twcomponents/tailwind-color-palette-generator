@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
   // native
-  import { ref, watch, onMounted, onUnmounted } from 'vue';
+  import { ref } from 'vue';
 
   // demo components
   import Badges from '@/components/demo/single-color/Badges.vue';
@@ -31,10 +31,11 @@
 
   // shared
   import { IPaletteColor } from '@/shared/models/color.model';
+  import { IPosition } from '@/shared/models/position.model';
 
   // #region Demo Hints
 
-  const colorHintPosition = ref<{ x: number; y: number }>({ x: 0, y: 0 });
+  const colorHintPosition = ref<IPosition>({ x: 0, y: 0 });
   const isColorHintVisible = ref<boolean>(false);
   const colorHints = ref<IPaletteColor[]>([]);
 
