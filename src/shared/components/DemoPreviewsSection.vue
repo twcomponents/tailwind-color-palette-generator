@@ -23,6 +23,9 @@
   // native
   import { ref } from 'vue';
 
+  // feature components
+  import ColorHint from '@/components/features/ColorHint.vue';
+
   // demo components
   import Badges from '@/components/demo/single-color/Badges.vue';
   import Buttons from '@/components/demo/single-color/Buttons.vue';
