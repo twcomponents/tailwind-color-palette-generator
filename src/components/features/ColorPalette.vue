@@ -11,8 +11,10 @@
           y: 0,
           opacity: 1,
         }"
-        class="text-lg font-light text-center"
+        class="flex flex-row gap-1 justify-center items-center text-lg font-normal text-center"
       >
+        <Eclipse :size="15" />
+
         {{ colorName }}
       </h1>
 
@@ -21,9 +23,10 @@
         <AlertDialog>
           <AlertDialogTrigger as-child>
             <button
-              class="dark:text-zinc-400 dark:hover:text-zinc-300 transition-all duration-200 ease-in-out"
+              class="flex flex-row gap-1 justify-center items-center dark:text-zinc-400 dark:hover:text-zinc-300 transition-all duration-200 ease-in-out"
               @click="onExportClick()"
             >
+              <ChevronsUpDown :size="16" />
               Export
             </button>
           </AlertDialogTrigger>
@@ -143,7 +146,7 @@
   } from '@/components/ui/alert-dialog';
   import { onMounted, onUnmounted, ref, watch } from 'vue';
 
-  import { X, Copy } from 'lucide-vue-next';
+  import { X, Copy, ChevronsUpDown, Eclipse } from 'lucide-vue-next';
   import ExportUtil from '@/shared/utils/export.util';
 
   // third party
