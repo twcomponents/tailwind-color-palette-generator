@@ -19,7 +19,7 @@
           </div>
 
           <!-- Subtitle -->
-          <p class="mt-6 text-xl font-thin text-zinc-500">
+          <p class="mt-10 text-xl font-thin text-zinc-500">
             Press
             <button
               v-motion
