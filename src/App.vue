@@ -1,7 +1,7 @@
 <template>
   <Navbar />
 
-  <main class="mt-[50px]">
+  <main class="md:container mt-[40px]">
     <RouterView />
   </main>
 

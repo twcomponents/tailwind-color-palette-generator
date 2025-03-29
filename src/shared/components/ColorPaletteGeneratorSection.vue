@@ -1,11 +1,15 @@
 <template>
   <!-- Generator UI -->
   <section class="flex flex-col w-full py-10">
-    <div class="mt-8 mb-6 md:mt-16 md:mb-6">
-      <div class="md:my-14 md:mb-8">
-        <div class="md:mb-12 text-center">
+    <!-- Hero -->
+    <div class="mt-4 mb-6 md:mb-6">
+      <div class="md:my-10 md:mb-8">
+        <!-- Title Container -->
+        <div class="mb-12 text-center px-4">
           <!-- Title -->
-          <div class="text-5xl font-bold text-color w-full">
+          <div
+            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-color w-full"
+          >
             <LetterPullUp
               words="Tailwind CSS"
               :delay="30"
@@ -19,7 +23,9 @@
           </div>
 
           <!-- Subtitle -->
-          <p class="mt-10 text-xl font-thin text-zinc-500">
+          <p
+            class="mt-10 text-base md:text-lg lg:text-xl font-thin text-zinc-500"
+          >
             Press
             <button
               v-motion
@@ -46,7 +52,7 @@
         </div>
 
         <!-- Color Pickers -->
-        <div class="flex flex-col max-w-lg gap-5 mx-auto">
+        <div class="flex flex-col gap-5 mx-auto max-w-lg">
           <!-- Primary Color Picker -->
           <ColorBar
             ref="colorPickerRef"
