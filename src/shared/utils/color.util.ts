@@ -12,7 +12,7 @@ export default class ColorUtil {
   }
 
   public static isValidHex(hex: string): boolean {
-    const hexColorCodeRegex = /^#([0-9A-F]{3}|[0-9A-F]{6})$/i;
+    const hexColorCodeRegex = /^#?([0-9a-fA-F]{6})$/i;
 
     return hexColorCodeRegex.test(hex);
   }
