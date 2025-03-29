@@ -6,6 +6,7 @@
   </main>
 
   <!-- To keep these classes in bundled CSS -->
+  <!-- Also, in v4 safelist is not supported -->
   <div class="hidden">
     <div class="bg-twc-theme-50"></div>
     <div class="bg-twc-theme-100"></div>
