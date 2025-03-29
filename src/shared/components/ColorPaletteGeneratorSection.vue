@@ -181,7 +181,7 @@
 
     const newPalette = Object.entries(
       tailwindcssPaletteGenerator({
-        colors: [event.color],
+        colors: [event.color.startsWith('#') ? event.color : `#${event.color}`],
         names: ['theme'],
       }).theme
     );
@@ -236,7 +236,7 @@
 
     const newPalette = Object.entries(
       tailwindcssPaletteGenerator({
-        colors: [event.color],
+        colors: [event.color.startsWith('#') ? event.color : `#${event.color}`],
         names: ['theme'],
       }).theme
     );
