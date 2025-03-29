@@ -25,6 +25,7 @@
         @change="onColorInputChange()"
         @input="onColorInputChange()"
         placeholder="Enter hex code"
+        maxlength="7"
         class="border-none dark:bg-zinc-950 font-thin outline-none text-center"
       />
 
@@ -39,6 +40,14 @@
         </button>
       </div>
     </div>
+
+    <!-- Close -->
+    <span
+      class="absolute top-4 -left-8 w-1/12 px-3 hover:scale-110 animate-pulse"
+      v-if="!isColorValid"
+    >
+      <TriangleAlert class="text-orange-500" title="" />
+    </span>
 
     <!-- Close -->
     <button
@@ -56,7 +65,7 @@
   import { ref, onMounted, defineEmits, defineExpose } from 'vue';
 
   // third party
-  import { Shuffle, CircleX } from 'lucide-vue-next';
+  import { Shuffle, CircleX, TriangleAlert } from 'lucide-vue-next';
   import tippy from 'tippy.js';
 
   // shared
@@ -70,22 +79,26 @@
   const emitters = defineEmits(['change', 'close']);
 
   const pureColor = ref<string>('#ffffff');
+  const isColorValid = ref<boolean>(false);
 
   const generateRandomColor = () => {
     const color = ColorUtil.getRandomColor();
 
     pureColor.value = color;
+    isColorValid.value = ColorUtil.isValidHex(pureColor.value);
 
     emitters('change', {
       color: pureColor.value,
-      isValid: ColorUtil.isValidHex(pureColor.value),
+      isValid: isColorValid.value,
     });
   };
 
   const onPureColorChange = () => {
+    isColorValid.value = ColorUtil.isValidHex(pureColor.value);
+
     emitters('change', {
       color: pureColor.value,
-      isValid: ColorUtil.isValidHex(pureColor.value),
+      isValid: isColorValid.value,
     });
   };
 
@@ -98,19 +111,22 @@
   };
 
   const onColorInputChange = () => {
+    isColorValid.value = ColorUtil.isValidHex(pureColor.value);
+
     emitters('change', {
       color: pureColor.value,
-      isValid: ColorUtil.isValidHex(pureColor.value),
+      isValid: isColorValid.value,
     });
   };
 
   onMounted(() => {
     if (props.pureColor) {
       pureColor.value = `#${props.pureColor}`;
+      isColorValid.value = ColorUtil.isValidHex(pureColor.value);
 
       emitters('change', {
         color: pureColor.value,
-        isValid: ColorUtil.isValidHex(pureColor.value),
+        isValid: isColorValid.value,
       });
     } else {
       generateRandomColor();

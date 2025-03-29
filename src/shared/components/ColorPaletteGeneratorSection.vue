@@ -173,6 +173,10 @@
   const colorPickerRef = ref<InstanceType<typeof ColorPicker> | null>(null);
 
   const onColorChange = (event: IColorChangeEvent) => {
+    if (!event.isValid) {
+      return;
+    }
+
     const root = document.documentElement;
 
     const newPalette = Object.entries(
@@ -224,6 +228,10 @@
   );
 
   const onSecondaryColorChange = (event: IColorChangeEvent) => {
+    if (!event.isValid) {
+      return;
+    }
+
     const root = document.documentElement;
 
     const newPalette = Object.entries(
