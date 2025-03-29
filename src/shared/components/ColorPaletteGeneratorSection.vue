@@ -48,7 +48,7 @@
         <!-- Color Pickers -->
         <div class="flex flex-col max-w-lg gap-5 mx-auto">
           <!-- Primary Color Picker -->
-          <ColorPicker
+          <ColorBar
             ref="colorPickerRef"
             :pureColor="primary"
             :pickerIndex="0"
@@ -57,7 +57,7 @@
 
           <!-- Secondary Color Picker -->
           <template v-if="secondaryColorPalette !== null">
-            <ColorPicker
+            <ColorBar
               ref="secondaryColorPickerRef"
               :pureColor="secondary"
               :pickerIndex="1"
@@ -107,7 +107,7 @@
   import { RouteParamsGeneric, useRoute, useRouter } from 'vue-router';
 
   // feature components
-  import ColorPicker from '@/components/features/ColorBar.vue';
+  import ColorBar from '@/components/features/ColorBar.vue';
   import ColorPalette from '@/components/features/ColorPalette.vue';
   import LetterPullUp from '@/components/inspira-ui/LetterPullUp.vue';
 
@@ -170,7 +170,7 @@
 
   const colorPalette = ref<any[]>([]);
   const colorName = ref<string>('');
-  const colorPickerRef = ref<InstanceType<typeof ColorPicker> | null>(null);
+  const colorPickerRef = ref<InstanceType<typeof ColorBar> | null>(null);
 
   const onColorChange = (event: IColorChangeEvent) => {
     if (!event.isValid) {
@@ -223,7 +223,7 @@
 
   const secondaryColorPalette = ref<IPaletteColor[] | null>(null);
   const secondaryColorName = ref<string>('');
-  const secondaryColorPickerRef = ref<InstanceType<typeof ColorPicker> | null>(
+  const secondaryColorPickerRef = ref<InstanceType<typeof ColorBar> | null>(
     null
   );
 
