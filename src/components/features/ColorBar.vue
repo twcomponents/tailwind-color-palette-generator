@@ -43,8 +43,12 @@
 
     <!-- Close -->
     <span
-      class="absolute top-4 -left-8 w-1/12 px-3 hover:scale-110 animate-pulse"
-      v-if="!isColorValid"
+      class="absolute top-4 -left-8 w-1/12 px-3 hover:scale-110"
+      :class="{
+        'opacity-0': isColorValid,
+        'opacity-100 animate-pulse': !isColorValid,
+      }"
+      data-tippy-content="Invalid color, please enter a valid hex code"
     >
       <TriangleAlert class="text-orange-500" title="" />
     </span>
